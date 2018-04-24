@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A97DE8A-9743-4A12-B831-775CB6A364B9}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ResourceLibrary</RootNamespace>
+    <AssemblyName>ResourceLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\about.png" />
+    <Resource Include="Images\Buttons\add.png" />
+    <Resource Include="Images\Buttons\add2.png" />
+    <Resource Include="Images\Buttons\arrow2_down_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_down_green.png" />
+    <Resource Include="Images\Buttons\arrow2_down_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_down_left_green.png" />
+    <Resource Include="Images\Buttons\arrow2_down_left_red.png" />
+    <Resource Include="Images\Buttons\arrow2_down_red.png" />
+    <Resource Include="Images\Buttons\arrow2_down_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_down_right_green.png" />
+    <Resource Include="Images\Buttons\arrow2_down_right_red.png" />
+    <Resource Include="Images\Buttons\arrow2_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_left_green.png" />
+    <Resource Include="Images\Buttons\arrow2_left_red.png" />
+    <Resource Include="Images\Buttons\arrow2_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_right_green.png" />
+    <Resource Include="Images\Buttons\arrow2_right_red.png" />
+    <Resource Include="Images\Buttons\arrow2_up_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_up_green.png" />
+    <Resource Include="Images\Buttons\arrow2_up_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_up_left_green.png" />
+    <Resource Include="Images\Buttons\arrow2_up_left_red.png" />
+    <Resource Include="Images\Buttons\arrow2_up_red.png" />
+    <Resource Include="Images\Buttons\arrow2_up_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow2_up_right_green.png" />
+    <Resource Include="Images\Buttons\arrow2_up_right_red.png" />
+    <Resource Include="Images\Buttons\arrow_down_blue.png" />
+    <Resource Include="Images\Buttons\arrow_down_green.png" />
+    <Resource Include="Images\Buttons\arrow_down_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow_down_left_green.png" />
+    <Resource Include="Images\Buttons\arrow_down_left_red.png" />
+    <Resource Include="Images\Buttons\arrow_down_red.png" />
+    <Resource Include="Images\Buttons\arrow_down_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow_down_right_green.png" />
+    <Resource Include="Images\Buttons\arrow_down_right_red.png" />
+    <Resource Include="Images\Buttons\arrow_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow_left_green.png" />
+    <Resource Include="Images\Buttons\arrow_left_red.png" />
+    <Resource Include="Images\Buttons\arrow_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow_right_green.png" />
+    <Resource Include="Images\Buttons\arrow_right_red.png" />
+    <Resource Include="Images\Buttons\arrow_up_blue.png" />
+    <Resource Include="Images\Buttons\arrow_up_green.png" />
+    <Resource Include="Images\Buttons\arrow_up_left_blue.png" />
+    <Resource Include="Images\Buttons\arrow_up_left_green.png" />
+    <Resource Include="Images\Buttons\arrow_up_left_red.png" />
+    <Resource Include="Images\Buttons\arrow_up_red.png" />
+    <Resource Include="Images\Buttons\arrow_up_right_blue.png" />
+    <Resource Include="Images\Buttons\arrow_up_right_green.png" />
+    <Resource Include="Images\Buttons\arrow_up_right_red.png" />
+    <Resource Include="Images\Buttons\bookmarks.png" />
+    <Resource Include="Images\Buttons\bookmarks_preferences.png" />
+    <Resource Include="Images\Buttons\bookmark_blue.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_add.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_delete.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_down.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_edit.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_new.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_preferences.png" />
+    <Resource Include="Images\Buttons\bookmark_blue_up.png" />
+    <Resource Include="Images\Buttons\bookmark_green.png" />
+    <Resource Include="Images\Buttons\bookmark_silver.png" />
+    <Resource Include="Images\Buttons\books_blue.png" />
+    <Resource Include="Images\Buttons\books_blue_add.png" />
+    <Resource Include="Images\Buttons\books_blue_delete.png" />
+    <Resource Include="Images\Buttons\books_blue_edit.png" />
+    <Resource Include="Images\Buttons\books_blue_preferences.png" />
+    <Resource Include="Images\Buttons\book_blue.png" />
+    <Resource Include="Images\Buttons\book_blue_add.png" />
+    <Resource Include="Images\Buttons\book_blue_delete.png" />
+    <Resource Include="Images\Buttons\book_blue_edit.png" />
+    <Resource Include="Images\Buttons\book_blue_find.png" />
+    <Resource Include="Images\Buttons\book_blue_new.png" />
+    <Resource Include="Images\Buttons\book_blue_next.png" />
+    <Resource Include="Images\Buttons\book_blue_open.png" />
+    <Resource Include="Images\Buttons\book_blue_open2.png" />
+    <Resource Include="Images\Buttons\book_blue_preferences.png" />
+    <Resource Include="Images\Buttons\book_blue_previous.png" />
+    <Resource Include="Images\Buttons\book_blue_view.png" />
+    <Resource Include="Images\Buttons\book_bookmark.png" />
+    <Resource Include="Images\Buttons\book_green.png" />
+    <Resource Include="Images\Buttons\book_red.png" />
+    <Resource Include="Images\Buttons\book_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_ball_blue.png" />
+    <Resource Include="Images\Buttons\bullet_ball_glass_blue.png" />
+    <Resource Include="Images\Buttons\bullet_ball_glass_green.png" />
+    <Resource Include="Images\Buttons\bullet_ball_glass_grey.png" />
+    <Resource Include="Images\Buttons\bullet_ball_glass_red.png" />
+    <Resource Include="Images\Buttons\bullet_ball_glass_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_ball_green.png" />
+    <Resource Include="Images\Buttons\bullet_ball_grey.png" />
+    <Resource Include="Images\Buttons\bullet_ball_red.png" />
+    <Resource Include="Images\Buttons\bullet_ball_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_square_blue.png" />
+    <Resource Include="Images\Buttons\bullet_square_glass_blue.png" />
+    <Resource Include="Images\Buttons\bullet_square_glass_green.png" />
+    <Resource Include="Images\Buttons\bullet_square_glass_grey.png" />
+    <Resource Include="Images\Buttons\bullet_square_glass_red.png" />
+    <Resource Include="Images\Buttons\bullet_square_glass_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_square_green.png" />
+    <Resource Include="Images\Buttons\bullet_square_grey.png" />
+    <Resource Include="Images\Buttons\bullet_square_red.png" />
+    <Resource Include="Images\Buttons\bullet_square_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_blue.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_glass_blue.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_glass_green.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_glass_grey.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_glass_red.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_glass_yellow.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_green.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_grey.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_red.png" />
+    <Resource Include="Images\Buttons\bullet_triangle_yellow.png" />
+    <Resource Include="Images\Buttons\cd.png" />
+    <Resource Include="Images\Buttons\cd_add.png" />
+    <Resource Include="Images\Buttons\cd_black.png" />
+    <Resource Include="Images\Buttons\cd_blue.png" />
+    <Resource Include="Images\Buttons\cd_burn.png" />
+    <Resource Include="Images\Buttons\cd_case.png" />
+    <Resource Include="Images\Buttons\cd_data.png" />
+    <Resource Include="Images\Buttons\cd_delete.png" />
+    <Resource Include="Images\Buttons\cd_gold.png" />
+    <Resource Include="Images\Buttons\cd_into.png" />
+    <Resource Include="Images\Buttons\cd_music.png" />
+    <Resource Include="Images\Buttons\cd_new.png" />
+    <Resource Include="Images\Buttons\cd_out.png" />
+    <Resource Include="Images\Buttons\cd_pause.png" />
+    <Resource Include="Images\Buttons\cd_pirated.png" />
+    <Resource Include="Images\Buttons\cd_run.png" />
+    <Resource Include="Images\Buttons\cd_stop.png" />
+    <Resource Include="Images\Buttons\check.png" />
+    <Resource Include="Images\Buttons\checkbox.png" />
+    <Resource Include="Images\Buttons\checkbox_unchecked.png" />
+    <Resource Include="Images\Buttons\checks.png" />
+    <Resource Include="Images\Buttons\clipboard.png" />
+    <Resource Include="Images\Buttons\clipboard2.png" />
+    <Resource Include="Images\Buttons\clipboard_add.png" />
+    <Resource Include="Images\Buttons\clipboard_delete.png" />
+    <Resource Include="Images\Buttons\clipboard_empty.png" />
+    <Resource Include="Images\Buttons\clipboard_next.png" />
+    <Resource Include="Images\Buttons\clipboard_next_down.png" />
+    <Resource Include="Images\Buttons\control_panel.png" />
+    <Resource Include="Images\Buttons\control_panel2.png" />
+    <Resource Include="Images\Buttons\copy.png" />
+    <Resource Include="Images\Buttons\cut.png" />
+    <Resource Include="Images\Buttons\delete.png" />
+    <Resource Include="Images\Buttons\delete2.png" />
+    <Resource Include="Images\Buttons\dictionary.png" />
+    <Resource Include="Images\Buttons\document.png" />
+    <Resource Include="Images\Buttons\document2.png" />
+    <Resource Include="Images\Buttons\documents.png" />
+    <Resource Include="Images\Buttons\documents_exchange.png" />
+    <Resource Include="Images\Buttons\documents_gear.png" />
+    <Resource Include="Images\Buttons\documents_new.png" />
+    <Resource Include="Images\Buttons\documents_preferences.png" />
+    <Resource Include="Images\Buttons\document_add.png" />
+    <Resource Include="Images\Buttons\document_attachment.png" />
+    <Resource Include="Images\Buttons\document_certificate.png" />
+    <Resource Include="Images\Buttons\document_chart.png" />
+    <Resource Include="Images\Buttons\document_check.png" />
+    <Resource Include="Images\Buttons\document_connection.png" />
+    <Resource Include="Images\Buttons\document_cup.png" />
+    <Resource Include="Images\Buttons\document_delete.png" />
+    <Resource Include="Images\Buttons\document_dirty.png" />
+    <Resource Include="Images\Buttons\document_down.png" />
+    <Resource Include="Images\Buttons\document_edit.png" />
+    <Resource Include="Images\Buttons\document_error.png" />
+    <Resource Include="Images\Buttons\document_find.png" />
+    <Resource Include="Images\Buttons\document_forbidden.png" />
+    <Resource Include="Images\Buttons\document_gear.png" />
+    <Resource Include="Images\Buttons\document_heart.png" />
+    <Resource Include="Images\Buttons\document_information.png" />
+    <Resource Include="Images\Buttons\document_into.png" />
+    <Resource Include="Images\Buttons\document_lock.png" />
+    <Resource Include="Images\Buttons\document_music.png" />
+    <Resource Include="Images\Buttons\document_new.png" />
+    <Resource Include="Images\Buttons\document_notebook.png" />
+    <Resource Include="Images\Buttons\document_ok.png" />
+    <Resource Include="Images\Buttons\document_out.png" />
+    <Resource Include="Images\Buttons\document_pinned.png" />
+    <Resource Include="Images\Buttons\document_plain.png" />
+    <Resource Include="Images\Buttons\document_plain_blue.png" />
+    <Resource Include="Images\Buttons\document_plain_green.png" />
+    <Resource Include="Images\Buttons\document_plain_new.png" />
+    <Resource Include="Images\Buttons\document_plain_red.png" />
+    <Resource Include="Images\Buttons\document_plain_yellow.png" />
+    <Resource Include="Images\Buttons\document_preferences.png" />
+    <Resource Include="Images\Buttons\document_pulse.png" />
+    <Resource Include="Images\Buttons\document_refresh.png" />
+    <Resource Include="Images\Buttons\document_stop.png" />
+    <Resource Include="Images\Buttons\document_text.png" />
+    <Resource Include="Images\Buttons\document_time.png" />
+    <Resource Include="Images\Buttons\document_up.png" />
+    <Resource Include="Images\Buttons\document_view.png" />
+    <Resource Include="Images\Buttons\document_warning.png" />
+    <Resource Include="Images\Buttons\document_zoom_in.png" />
+    <Resource Include="Images\Buttons\document_zoom_out.png" />
+    <Resource Include="Images\Buttons\door.png" />
+    <Resource Include="Images\Buttons\door2.png" />
+    <Resource Include="Images\Buttons\door2_open.png" />
+    <Resource Include="Images\Buttons\door_open.png" />
+    <Resource Include="Images\Buttons\edit.png" />
+    <Resource Include="Images\Buttons\error.png" />
+    <Resource Include="Images\Buttons\exit.png" />
+    <Resource Include="Images\Buttons\find.png" />
+    <Resource Include="Images\Buttons\find_again.png" />
+    <Resource Include="Images\Buttons\find_next.png" />
+    <Resource Include="Images\Buttons\find_previous.png" />
+    <Resource Include="Images\Buttons\find_selection.png" />
+    <Resource Include="Images\Buttons\find_text.png" />
+    <Resource Include="Images\Buttons\first_aid.png" />
+    <Resource Include="Images\Buttons\first_aid_box.png" />
+    <Resource Include="Images\Buttons\fit_to_size.png" />
+    <Resource Include="Images\Buttons\flash_red.png" />
+    <Resource Include="Images\Buttons\flash_yellow.png" />
+    <Resource Include="Images\Buttons\flash_yellow_add.png" />
+    <Resource Include="Images\Buttons\flash_yellow_delete.png" />
+    <Resource Include="Images\Buttons\flash_yellow_edit.png" />
+    <Resource Include="Images\Buttons\floppy_disk.png" />
+    <Resource Include="Images\Buttons\floppy_disk2.png" />
+    <Resource Include="Images\Buttons\floppy_disks.png" />
+    <Resource Include="Images\Buttons\floppy_disk_add.png" />
+    <Resource Include="Images\Buttons\floppy_disk_blue.png" />
+    <Resource Include="Images\Buttons\floppy_disk_delete.png" />
+    <Resource Include="Images\Buttons\floppy_disk_edit.png" />
+    <Resource Include="Images\Buttons\floppy_disk_error.png" />
+    <Resource Include="Images\Buttons\floppy_disk_green.png" />
+    <Resource Include="Images\Buttons\floppy_disk_information.png" />
+    <Resource Include="Images\Buttons\floppy_disk_ok.png" />
+    <Resource Include="Images\Buttons\floppy_disk_red.png" />
+    <Resource Include="Images\Buttons\floppy_disk_warning.png" />
+    <Resource Include="Images\Buttons\floppy_disk_window.png" />
+    <Resource Include="Images\Buttons\floppy_disk_yellow.png" />
+    <Resource Include="Images\Buttons\floppy_drive.png" />
+    <Resource Include="Images\Buttons\folder.png" />
+    <Resource Include="Images\Buttons\folder2.png" />
+    <Resource Include="Images\Buttons\folder2_blue.png" />
+    <Resource Include="Images\Buttons\folder2_green.png" />
+    <Resource Include="Images\Buttons\folder2_red.png" />
+    <Resource Include="Images\Buttons\folder2_yellow.png" />
+    <Resource Include="Images\Buttons\folder3.png" />
+    <Resource Include="Images\Buttons\folder3_document.png" />
+    <Resource Include="Images\Buttons\folder3_mail.png" />
+    <Resource Include="Images\Buttons\folder3_movie.png" />
+    <Resource Include="Images\Buttons\folder3_music.png" />
+    <Resource Include="Images\Buttons\folders.png" />
+    <Resource Include="Images\Buttons\folder_add.png" />
+    <Resource Include="Images\Buttons\folder_blue.png" />
+    <Resource Include="Images\Buttons\folder_closed.png" />
+    <Resource Include="Images\Buttons\folder_cubes.png" />
+    <Resource Include="Images\Buttons\folder_delete.png" />
+    <Resource Include="Images\Buttons\folder_document.png" />
+    <Resource Include="Images\Buttons\folder_edit.png" />
+    <Resource Include="Images\Buttons\folder_error.png" />
+    <Resource Include="Images\Buttons\folder_forbidden.png" />
+    <Resource Include="Images\Buttons\folder_gear.png" />
+    <Resource Include="Images\Buttons\folder_green.png" />
+    <Resource Include="Images\Buttons\folder_information.png" />
+    <Resource Include="Images\Buttons\folder_into.png" />
+    <Resource Include="Images\Buttons\folder_lock.png" />
+    <Resource Include="Images\Buttons\folder_movie.png" />
+    <Resource Include="Images\Buttons\folder_music.png" />
+    <Resource Include="Images\Buttons\folder_network.png" />
+    <Resource Include="Images\Buttons\folder_new.png" />
+    <Resource Include="Images\Buttons\folder_ok.png" />
+    <Resource Include="Images\Buttons\folder_out.png" />
+    <Resource Include="Images\Buttons\folder_preferences.png" />
+    <Resource Include="Images\Buttons\folder_red.png" />
+    <Resource Include="Images\Buttons\folder_refresh.png" />
+    <Resource Include="Images\Buttons\folder_time.png" />
+    <Resource Include="Images\Buttons\folder_up.png" />
+    <Resource Include="Images\Buttons\folder_view.png" />
+    <Resource Include="Images\Buttons\folder_warning.png" />
+    <Resource Include="Images\Buttons\folder_window.png" />
+    <Resource Include="Images\Buttons\font.png" />
+    <Resource Include="Images\Buttons\form_blue.png" />
+    <Resource Include="Images\Buttons\form_blue_add.png" />
+    <Resource Include="Images\Buttons\form_blue_delete.png" />
+    <Resource Include="Images\Buttons\form_blue_edit.png" />
+    <Resource Include="Images\Buttons\form_blue_plain.png" />
+    <Resource Include="Images\Buttons\form_green.png" />
+    <Resource Include="Images\Buttons\form_green_add.png" />
+    <Resource Include="Images\Buttons\form_green_delete.png" />
+    <Resource Include="Images\Buttons\form_green_edit.png" />
+    <Resource Include="Images\Buttons\form_green_plain.png" />
+    <Resource Include="Images\Buttons\form_red.png" />
+    <Resource Include="Images\Buttons\form_red_add.png" />
+    <Resource Include="Images\Buttons\form_red_delete.png" />
+    <Resource Include="Images\Buttons\form_red_edit.png" />
+    <Resource Include="Images\Buttons\form_red_plain.png" />
+    <Resource Include="Images\Buttons\form_yellow.png" />
+    <Resource Include="Images\Buttons\form_yellow_add.png" />
+    <Resource Include="Images\Buttons\form_yellow_delete.png" />
+    <Resource Include="Images\Buttons\form_yellow_edit.png" />
+    <Resource Include="Images\Buttons\form_yellow_plain.png" />
+    <Resource Include="Images\Buttons\garbage.png" />
+    <Resource Include="Images\Buttons\garbage_add.png" />
+    <Resource Include="Images\Buttons\garbage_delete.png" />
+    <Resource Include="Images\Buttons\garbage_empty.png" />
+    <Resource Include="Images\Buttons\garbage_error.png" />
+    <Resource Include="Images\Buttons\garbage_full.png" />
+    <Resource Include="Images\Buttons\garbage_information.png" />
+    <Resource Include="Images\Buttons\garbage_make_empty.png" />
+    <Resource Include="Images\Buttons\garbage_ok.png" />
+    <Resource Include="Images\Buttons\garbage_warning.png" />
+    <Resource Include="Images\Buttons\gears.png" />
+    <Resource Include="Images\Buttons\hard_drive.png" />
+    <Resource Include="Images\Buttons\hard_drive_add.png" />
+    <Resource Include="Images\Buttons\hard_drive_delete.png" />
+    <Resource Include="Images\Buttons\hard_drive_edit.png" />
+    <Resource Include="Images\Buttons\hard_drive_error.png" />
+    <Resource Include="Images\Buttons\hard_drive_information.png" />
+    <Resource Include="Images\Buttons\hard_drive_network.png" />
+    <Resource Include="Images\Buttons\hard_drive_network_error.png" />
+    <Resource Include="Images\Buttons\hard_drive_network_information.png" />
+    <Resource Include="Images\Buttons\hard_drive_network_ok.png" />
+    <Resource Include="Images\Buttons\hard_drive_network_warning.png" />
+    <Resource Include="Images\Buttons\hard_drive_ok.png" />
+    <Resource Include="Images\Buttons\hard_drive_warning.png" />
+    <Resource Include="Images\Buttons\heart.png" />
+    <Resource Include="Images\Buttons\heart_add.png" />
+    <Resource Include="Images\Buttons\heart_broken.png" />
+    <Resource Include="Images\Buttons\heart_delete.png" />
+    <Resource Include="Images\Buttons\heart_edit.png" />
+    <Resource Include="Images\Buttons\heart_new.png" />
+    <Resource Include="Images\Buttons\heart_preferences.png" />
+    <Resource Include="Images\Buttons\help.png" />
+    <Resource Include="Images\Buttons\help2.png" />
+    <Resource Include="Images\Buttons\help_earth.png" />
+    <Resource Include="Images\Buttons\history.png" />
+    <Resource Include="Images\Buttons\history2.png" />
+    <Resource Include="Images\Buttons\history_add.png" />
+    <Resource Include="Images\Buttons\history_delete.png" />
+    <Resource Include="Images\Buttons\history_edit.png" />
+    <Resource Include="Images\Buttons\information.png" />
+    <Resource Include="Images\Buttons\information2.png" />
+    <Resource Include="Images\Buttons\lifebelt.png" />
+    <Resource Include="Images\Buttons\lightbulb.png" />
+    <Resource Include="Images\Buttons\lightbulb_on.png" />
+    <Resource Include="Images\Buttons\magazine_folder.png" />
+    <Resource Include="Images\Buttons\magazine_folder_empty.png" />
+    <Resource Include="Images\Buttons\magic_wand.png" />
+    <Resource Include="Images\Buttons\magic_wand2.png" />
+    <Resource Include="Images\Buttons\navigate_beginning.png" />
+    <Resource Include="Images\Buttons\navigate_check.png" />
+    <Resource Include="Images\Buttons\navigate_close.png" />
+    <Resource Include="Images\Buttons\navigate_cross.png" />
+    <Resource Include="Images\Buttons\navigate_down.png" />
+    <Resource Include="Images\Buttons\navigate_down2.png" />
+    <Resource Include="Images\Buttons\navigate_end.png" />
+    <Resource Include="Images\Buttons\navigate_left.png" />
+    <Resource Include="Images\Buttons\navigate_left2.png" />
+    <Resource Include="Images\Buttons\navigate_minus.png" />
+    <Resource Include="Images\Buttons\navigate_open.png" />
+    <Resource Include="Images\Buttons\navigate_plus.png" />
+    <Resource Include="Images\Buttons\navigate_right.png" />
+    <Resource Include="Images\Buttons\navigate_right2.png" />
+    <Resource Include="Images\Buttons\navigate_up.png" />
+    <Resource Include="Images\Buttons\navigate_up2.png" />
+    <Resource Include="Images\Buttons\nav_down_blue.png" />
+    <Resource Include="Images\Buttons\nav_down_green.png" />
+    <Resource Include="Images\Buttons\nav_down_left_blue.png" />
+    <Resource Include="Images\Buttons\nav_down_left_green.png" />
+    <Resource Include="Images\Buttons\nav_down_left_red.png" />
+    <Resource Include="Images\Buttons\nav_down_left_yellow.png" />
+    <Resource Include="Images\Buttons\nav_down_red.png" />
+    <Resource Include="Images\Buttons\nav_down_right_blue.png" />
+    <Resource Include="Images\Buttons\nav_down_right_green.png" />
+    <Resource Include="Images\Buttons\nav_down_right_red.png" />
+    <Resource Include="Images\Buttons\nav_down_right_yellow.png" />
+    <Resource Include="Images\Buttons\nav_down_yellow.png" />
+    <Resource Include="Images\Buttons\nav_left_blue.png" />
+    <Resource Include="Images\Buttons\nav_left_green.png" />
+    <Resource Include="Images\Buttons\nav_left_red.png" />
+    <Resource Include="Images\Buttons\nav_left_yellow.png" />
+    <Resource Include="Images\Buttons\nav_plain_blue.png" />
+    <Resource Include="Images\Buttons\nav_plain_green.png" />
+    <Resource Include="Images\Buttons\nav_plain_red.png" />
+    <Resource Include="Images\Buttons\nav_plain_yellow.png" />
+    <Resource Include="Images\Buttons\nav_redo_blue.png" />
+    <Resource Include="Images\Buttons\nav_redo_green.png" />
+    <Resource Include="Images\Buttons\nav_redo_red.png" />
+    <Resource Include="Images\Buttons\nav_redo_yellow.png" />
+    <Resource Include="Images\Buttons\nav_refresh_blue.png" />
+    <Resource Include="Images\Buttons\nav_refresh_green.png" />
+    <Resource Include="Images\Buttons\nav_refresh_red.png" />
+    <Resource Include="Images\Buttons\nav_refresh_yellow.png" />
+    <Resource Include="Images\Buttons\nav_right_blue.png" />
+    <Resource Include="Images\Buttons\nav_right_green.png" />
+    <Resource Include="Images\Buttons\nav_right_red.png" />
+    <Resource Include="Images\Buttons\nav_right_yellow.png" />
+    <Resource Include="Images\Buttons\nav_undo_blue.png" />
+    <Resource Include="Images\Buttons\nav_undo_green.png" />
+    <Resource Include="Images\Buttons\nav_undo_red.png" />
+    <Resource Include="Images\Buttons\nav_undo_yellow.png" />
+    <Resource Include="Images\Buttons\nav_up_blue.png" />
+    <Resource Include="Images\Buttons\nav_up_green.png" />
+    <Resource Include="Images\Buttons\nav_up_left_blue.png" />
+    <Resource Include="Images\Buttons\nav_up_left_green.png" />
+    <Resource Include="Images\Buttons\nav_up_left_red.png" />
+    <Resource Include="Images\Buttons\nav_up_left_yellow.png" />
+    <Resource Include="Images\Buttons\nav_up_red.png" />
+    <Resource Include="Images\Buttons\nav_up_right_blue.png" />
+    <Resource Include="Images\Buttons\nav_up_right_green.png" />
+    <Resource Include="Images\Buttons\nav_up_right_red.png" />
+    <Resource Include="Images\Buttons\nav_up_right_yellow.png" />
+    <Resource Include="Images\Buttons\nav_up_yellow.png" />
+    <Resource Include="Images\Buttons\ok.png" />
+    <Resource Include="Images\Buttons\paste.png" />
+    <Resource Include="Images\Buttons\pointer.png" />
+    <Resource Include="Images\Buttons\preferences.png" />
+    <Resource Include="Images\Buttons\preferences_edit.png" />
+    <Resource Include="Images\Buttons\printer.png" />
+    <Resource Include="Images\Buttons\printer_add.png" />
+    <Resource Include="Images\Buttons\printer_delete.png" />
+    <Resource Include="Images\Buttons\printer_edit.png" />
+    <Resource Include="Images\Buttons\printer_error.png" />
+    <Resource Include="Images\Buttons\printer_information.png" />
+    <Resource Include="Images\Buttons\printer_network.png" />
+    <Resource Include="Images\Buttons\printer_new.png" />
+    <Resource Include="Images\Buttons\printer_ok.png" />
+    <Resource Include="Images\Buttons\printer_preferences.png" />
+    <Resource Include="Images\Buttons\printer_view.png" />
+    <Resource Include="Images\Buttons\printer_warning.png" />
+    <Resource Include="Images\Buttons\question_and_answer.png" />
+    <Resource Include="Images\Buttons\recycle.png" />
+    <Resource Include="Images\Buttons\recycle_add.png" />
+    <Resource Include="Images\Buttons\recycle_delete.png" />
+    <Resource Include="Images\Buttons\recycle_error.png" />
+    <Resource Include="Images\Buttons\recycle_information.png" />
+    <Resource Include="Images\Buttons\recycle_ok.png" />
+    <Resource Include="Images\Buttons\recycle_preferences.png" />
+    <Resource Include="Images\Buttons\recycle_warning.png" />
+    <Resource Include="Images\Buttons\redo.png" />
+    <Resource Include="Images\Buttons\refresh.png" />
+    <Resource Include="Images\Buttons\replace.png" />
+    <Resource Include="Images\Buttons\replace2.png" />
+    <Resource Include="Images\Buttons\save_as.png" />
+    <Resource Include="Images\Buttons\scroll.png" />
+    <Resource Include="Images\Buttons\scroll2.png" />
+    <Resource Include="Images\Buttons\scroll2_add.png" />
+    <Resource Include="Images\Buttons\scroll2_delete.png" />
+    <Resource Include="Images\Buttons\scroll2_edit.png" />
+    <Resource Include="Images\Buttons\scroll3.png" />
+    <Resource Include="Images\Buttons\scroll_add.png" />
+    <Resource Include="Images\Buttons\scroll_delete.png" />
+    <Resource Include="Images\Buttons\scroll_edit.png" />
+    <Resource Include="Images\Buttons\scroll_error.png" />
+    <Resource Include="Images\Buttons\scroll_information.png" />
+    <Resource Include="Images\Buttons\scroll_ok.png" />
+    <Resource Include="Images\Buttons\scroll_preferences.png" />
+    <Resource Include="Images\Buttons\scroll_refresh.png" />
+    <Resource Include="Images\Buttons\scroll_replace.png" />
+    <Resource Include="Images\Buttons\scroll_run.png" />
+    <Resource Include="Images\Buttons\scroll_stop.png" />
+    <Resource Include="Images\Buttons\scroll_view.png" />
+    <Resource Include="Images\Buttons\scroll_warning.png" />
+    <Resource Include="Images\Buttons\selection.png" />
+    <Resource Include="Images\Buttons\selection_delete.png" />
+    <Resource Include="Images\Buttons\selection_down.png" />
+    <Resource Include="Images\Buttons\selection_find.png" />
+    <Resource Include="Images\Buttons\selection_recycle.png" />
+    <Resource Include="Images\Buttons\selection_replace.png" />
+    <Resource Include="Images\Buttons\selection_up.png" />
+    <Resource Include="Images\Buttons\selection_view.png" />
+    <Resource Include="Images\Buttons\signpost.png" />
+    <Resource Include="Images\Buttons\signpost2.png" />
+    <Resource Include="Images\Buttons\signpost3.png" />
+    <Resource Include="Images\Buttons\signpost_add.png" />
+    <Resource Include="Images\Buttons\signpost_delete.png" />
+    <Resource Include="Images\Buttons\signpost_edit.png" />
+    <Resource Include="Images\Buttons\sign_forbidden.png" />
+    <Resource Include="Images\Buttons\sign_stop.png" />
+    <Resource Include="Images\Buttons\sign_warning.png" />
+    <Resource Include="Images\Buttons\sign_warning_biohazard.png" />
+    <Resource Include="Images\Buttons\sign_warning_flammable.png" />
+    <Resource Include="Images\Buttons\sign_warning_harmful.png" />
+    <Resource Include="Images\Buttons\sign_warning_radiation.png" />
+    <Resource Include="Images\Buttons\sign_warning_toxic.png" />
+    <Resource Include="Images\Buttons\sign_warning_voltage.png" />
+    <Resource Include="Images\Buttons\sign_yield.png" />
+    <Resource Include="Images\Buttons\spellcheck.png" />
+    <Resource Include="Images\Buttons\star2_blue.png" />
+    <Resource Include="Images\Buttons\star2_green.png" />
+    <Resource Include="Images\Buttons\star2_grey.png" />
+    <Resource Include="Images\Buttons\star2_red.png" />
+    <Resource Include="Images\Buttons\star2_yellow.png" />
+    <Resource Include="Images\Buttons\star_blue.png" />
+    <Resource Include="Images\Buttons\star_green.png" />
+    <Resource Include="Images\Buttons\star_grey.png" />
+    <Resource Include="Images\Buttons\star_red.png" />
+    <Resource Include="Images\Buttons\star_yellow.png" />
+    <Resource Include="Images\Buttons\star_yellow_add.png" />
+    <Resource Include="Images\Buttons\star_yellow_delete.png" />
+    <Resource Include="Images\Buttons\star_yellow_edit.png" />
+    <Resource Include="Images\Buttons\star_yellow_new.png" />
+    <Resource Include="Images\Buttons\star_yellow_preferences.png" />
+    <Resource Include="Images\Buttons\star_yellow_view.png" />
+    <Resource Include="Images\Buttons\symbol_copyright.png" />
+    <Resource Include="Images\Buttons\symbol_dollar.png" />
+    <Resource Include="Images\Buttons\symbol_euro.png" />
+    <Resource Include="Images\Buttons\symbol_exclamationmark.png" />
+    <Resource Include="Images\Buttons\symbol_paragraph.png" />
+    <Resource Include="Images\Buttons\symbol_percent.png" />
+    <Resource Include="Images\Buttons\symbol_pound.png" />
+    <Resource Include="Images\Buttons\symbol_questionmark.png" />
+    <Resource Include="Images\Buttons\symbol_sum.png" />
+    <Resource Include="Images\Buttons\symbol_yen.png" />
+    <Resource Include="Images\Buttons\text.png" />
+    <Resource Include="Images\Buttons\text_align_center.png" />
+    <Resource Include="Images\Buttons\text_align_justified.png" />
+    <Resource Include="Images\Buttons\text_align_left.png" />
+    <Resource Include="Images\Buttons\text_align_right.png" />
+    <Resource Include="Images\Buttons\text_binary.png" />
+    <Resource Include="Images\Buttons\text_bold.png" />
+    <Resource Include="Images\Buttons\text_braille.png" />
+    <Resource Include="Images\Buttons\text_find.png" />
+    <Resource Include="Images\Buttons\text_formula.png" />
+    <Resource Include="Images\Buttons\text_italics.png" />
+    <Resource Include="Images\Buttons\text_lock.png" />
+    <Resource Include="Images\Buttons\text_loudspeaker.png" />
+    <Resource Include="Images\Buttons\text_marked.png" />
+    <Resource Include="Images\Buttons\text_normal.png" />
+    <Resource Include="Images\Buttons\text_ok.png" />
+    <Resource Include="Images\Buttons\text_plain.png" />
+    <Resource Include="Images\Buttons\text_rich.png" />
+    <Resource Include="Images\Buttons\text_rich_colored.png" />
+    <Resource Include="Images\Buttons\text_rich_marked.png" />
+    <Resource Include="Images\Buttons\text_strikethrough.png" />
+    <Resource Include="Images\Buttons\text_subscript.png" />
+    <Resource Include="Images\Buttons\text_sum.png" />
+    <Resource Include="Images\Buttons\text_superscript.png" />
+    <Resource Include="Images\Buttons\text_tree.png" />
+    <Resource Include="Images\Buttons\text_underlined.png" />
+    <Resource Include="Images\Buttons\text_view.png" />
+    <Resource Include="Images\Buttons\ticket_blue.png" />
+    <Resource Include="Images\Buttons\ticket_green.png" />
+    <Resource Include="Images\Buttons\ticket_red.png" />
+    <Resource Include="Images\Buttons\ticket_yellow.png" />
+    <Resource Include="Images\Buttons\undo.png" />
+    <Resource Include="Images\Buttons\unknown.png" />
+    <Resource Include="Images\Buttons\view.png" />
+    <Resource Include="Images\Buttons\view_1_1.png" />
+    <Resource Include="Images\Buttons\view_add.png" />
+    <Resource Include="Images\Buttons\view_delete.png" />
+    <Resource Include="Images\Buttons\view_next.png" />
+    <Resource Include="Images\Buttons\view_previous.png" />
+    <Resource Include="Images\Buttons\window.png" />
+    <Resource Include="Images\Buttons\window2.png" />
+    <Resource Include="Images\Buttons\windows.png" />
+    <Resource Include="Images\Buttons\window_add.png" />
+    <Resource Include="Images\Buttons\window_black.png" />
+    <Resource Include="Images\Buttons\window_cd.png" />
+    <Resource Include="Images\Buttons\window_delete.png" />
+    <Resource Include="Images\Buttons\window_dialog.png" />
+    <Resource Include="Images\Buttons\window_earth.png" />
+    <Resource Include="Images\Buttons\window_edit.png" />
+    <Resource Include="Images\Buttons\window_environment.png" />
+    <Resource Include="Images\Buttons\window_equalizer.png" />
+    <Resource Include="Images\Buttons\window_error.png" />
+    <Resource Include="Images\Buttons\window_font.png" />
+    <Resource Include="Images\Buttons\window_gear.png" />
+    <Resource Include="Images\Buttons\window_information.png" />
+    <Resource Include="Images\Buttons\window_new.png" />
+    <Resource Include="Images\Buttons\window_next.png" />
+    <Resource Include="Images\Buttons\window_ok.png" />
+    <Resource Include="Images\Buttons\window_preferences.png" />
+    <Resource Include="Images\Buttons\window_previous.png" />
+    <Resource Include="Images\Buttons\window_sidebar.png" />
+    <Resource Include="Images\Buttons\window_split_hor.png" />
+    <Resource Include="Images\Buttons\window_split_ver.png" />
+    <Resource Include="Images\Buttons\window_star.png" />
+    <Resource Include="Images\Buttons\window_time.png" />
+    <Resource Include="Images\Buttons\window_view.png" />
+    <Resource Include="Images\Buttons\window_warning.png" />
+    <Resource Include="Images\Buttons\zoom_in.png" />
+    <Resource Include="Images\Buttons\zoom_out.png" />
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

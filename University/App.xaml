@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:University"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
-         
+        <ResourceDictionary
+            Source="Themes/Styles.xaml"/>
     </Application.Resources>
 </Application>

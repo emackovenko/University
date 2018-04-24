@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Data.University;
 using Microsoft.EntityFrameworkCore;
+using University.View.Common;
 
 namespace University
 {
@@ -19,7 +20,11 @@ namespace University
         {
             base.OnStartup(e);
 
+            var authWindow = new AuthWindow();
+            authWindow.ShowDialog();
+
             var desktop = new MainWindow();
+            MainWindow = desktop;
             desktop.ShowDialog();
             App.Current.Shutdown();
         }
