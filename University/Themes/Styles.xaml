@@ -45,6 +45,19 @@
 
     <!--*********  Components  ***********-->
 
+    <Style
+        TargetType="TextBox">
+        <Setter
+            Property="BorderBrush"
+            Value="#FF3D414E"/>
+    </Style>
+
+    <Style
+        TargetType="PasswordBox">
+        <Setter
+            Property="BorderBrush"
+            Value="#FF3D414E"/>
+    </Style>
 
     <Style
 		x:Key="LogTextBox"
@@ -90,6 +103,14 @@
 
     <Style x:Key="ToolButton" TargetType="{x:Type Button}">
         <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=ToolButtonBorder}"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="{x:Null}"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="32"/>
+    </Style>
+
+    <Style x:Key="CapacityButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{x:Null}"/>
         <Setter Property="Height" Value="32"/>

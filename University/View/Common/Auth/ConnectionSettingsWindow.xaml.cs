@@ -10,19 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace University
+namespace University.View.Common.Auth
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ConnectionSettingsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConnectionSettingsWindow : Window
     {
-        public MainWindow()
+        public ConnectionSettingsWindow()
         {
             InitializeComponent();
+            Messenger.Default.Register<string>(this, CloseRecieving);
+        }
+
+        void CloseRecieving(string message)
+        {
+            Close();
         }
     }
 }

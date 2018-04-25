@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Data.University;
 using Microsoft.EntityFrameworkCore;
+using University.View.Common.Auth;
 using University.View.Common;
 
 namespace University
@@ -20,12 +21,17 @@ namespace University
         {
             base.OnStartup(e);
 
-            var authWindow = new AuthWindow();
-            authWindow.ShowDialog();
+            App.Current.DispatcherUnhandledException += (new ExceptionDispatcher()).Handler;
 
-            var desktop = new MainWindow();
-            MainWindow = desktop;
-            desktop.ShowDialog();
+            var authWindow = new AuthWindow();
+            
+            if (authWindow.ShowDialog() ?? false)
+            {
+                var desktop = new DesktopWindow();
+                MainWindow = desktop;
+                desktop.ShowDialog();
+            }
+
             App.Current.Shutdown();
         }
     }
