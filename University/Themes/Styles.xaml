@@ -46,6 +46,13 @@
     <!--*********  Components  ***********-->
 
     <Style
+        TargetType="Window">
+        <Setter
+            Property="Padding"
+            Value="5"/>
+    </Style>
+
+    <Style
         TargetType="TextBox">
         <Setter
             Property="BorderBrush"
