@@ -5,13 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:University.View.Common"
         xmlns:vm="clr-namespace:University.ViewModel.Common"
+        xmlns:c="clr-namespace:WpfExtensions.Controls;assembly=WpfExtensions"
+        xmlns:vs="clr-namespace:University.ViewService"
+        xmlns:contingent="clr-namespace:University.View.Contingent"
         mc:Ignorable="d"
-        Title="Рубцовский индустриальный институт" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Рубцовский индустриальный институт" Height="406.4" Width="688.2" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:DesktopViewModel/>
     </Window.DataContext>
     <Grid>
-        
+        <TabControl
+            Margin="0,0,0,25">
+            <c:ExTabItem
+                vs:ProtectedView.Identity="Contingent"
+                Title="Контингент студентов"
+                Icon="/ResourceLibrary;component/Images/students.png">
+                <contingent:ContingentWorkspace/>
+            </c:ExTabItem>
+            <c:ExTabItem
+                vs:ProtectedView.Identity="Administration"
+                Title="Администрирование"
+                Icon="/ResourceLibrary;component/Images/hacker.png"></c:ExTabItem>
+        </TabControl>
         <StatusBar
             Height="21"
             FlowDirection="RightToLeft"

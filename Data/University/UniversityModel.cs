@@ -1,15 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Data.University
 {
     public class UniversityModel: DbContext
     {
+
+        public UniversityModel()
+            : base()
+        {
+            LoadEntities();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
+        }
+
+        
+
+        public void LoadEntities()
+        {
+            Addresses.Load();
+            Countries.Load();
+            Districts.Load();
+            Localities.Load();
+            Regions.Load();
+            Streets.Load();
+            Towns.Load();
+            Cathedras.Load();
+            Citizenships.Load();
+            Directions.Load();
+            Disciplines.Load();
+            DisciplineCycles.Load();
+            EducationCompetences.Load();
+            EducationForms.Load();
+            EducationLevels.Load();
+            EducationPlans.Load();
+            EducationProgramTypes.Load();
+            EducationStandartTypes.Load();
+            Faculties.Load();
+            FinanceSources.Load();
+            Genders.Load();
+            Groups.Load();
+            IdentityDocuments.Load();
+            IdentityTypes.Load();
+            IdentityOrganizations.Load();
+            Persons.Load();
+            Students.Load();
+            StudentStates.Load();
+            Teachers.Load();
+            Roles.Load();
+            Users.Load();
+            Commands.Load();
+            CommandPermissions.Load();
+            InterfaceElements.Load();
+            InterfacePermissions.Load();
         }
 
         public DbSet<Address> Addresses { get; set; }

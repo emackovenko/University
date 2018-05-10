@@ -29,10 +29,16 @@ namespace Data.University
         /// </summary>
         public List<CommandPermission> AvailableCommands { get; set; }
 
+        /// <summary>
+        /// Доступные для роли защищенные имена элементов интерфейса
+        /// </summary>
+        public List<InterfacePermission> AvailableViews { get; set; }
+
         public Role()
         {
             Users = new List<User>();
             AvailableCommands = new List<CommandPermission>();
+            AvailableViews = new List<InterfacePermission>();
         }
     }
 }

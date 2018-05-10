@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using University.ViewModel.Validation;
 using System.Reflection;
 
-namespace University.DialogService
+namespace University.ViewService
 {
     /// <summary>
     /// Логика взаимодействия для EditorWindow.xaml

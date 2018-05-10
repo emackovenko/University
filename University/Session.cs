@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.University;
+using MySql.Data.MySqlClient;
+using WorkOk = Data.WorkOk;
 
 namespace University
 {
@@ -54,8 +56,27 @@ namespace University
             {
                 _data = data;
                 CurrentUser = user;
+                WorkOkAuth();
                 return true; 
             }
+        }
+        
+        static bool WorkOkAuth()
+        {
+            var csb = new MySqlConnectionStringBuilder
+            {
+                Server = "localhost",
+                Port = 3306,
+                Database = "work_ok",
+                UserID = "emackovenko",
+                Password = "trustno1",
+                CharacterSet = "cp1251",
+                ConvertZeroDateTime = true,
+                
+            };
+
+            var connection = new MySqlConnection(csb.ToString());
+            return WorkOk.Context.Auth(connection);
         }
     }
 }
