@@ -14,7 +14,7 @@ namespace University.ViewModel.Contingent
         {
             get
             {
-                return new ObservableCollection<Student>(Context.Students.Where(s => s.StatusId == 1).OrderBy(s => s.FullName).OrderBy(s => s.Course).OrderBy(s => s.Group.Name));
+                return null;// new ObservableCollection<Student>(Context.Students.Where(s => s.StatusId == 1).OrderBy(s => s.FullName).OrderBy(s => s.Course).OrderBy(s => s.Group.Name));
             }
         }
     }

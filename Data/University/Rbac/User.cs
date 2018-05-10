@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,5 +61,14 @@ namespace Data.University
         /// Номер телефона
         /// </summary>
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Ф.И.О.
+        /// </summary>
+        [NotMapped]
+        public string FullName
+        {
+            get => string.Format("{0} {1} {2}", LastName, FirstName, Patronimyc);
+        }
     }
 }

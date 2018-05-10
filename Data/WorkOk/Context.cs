@@ -9,7 +9,7 @@ using System.Data;
 namespace Data.WorkOk
 {
     /// <summary>
-    /// Контекст базы данных АлтГТУ
+    /// Контекст базы данных WorkOk
     /// </summary>
     public static class Context
     {

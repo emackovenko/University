@@ -53,6 +53,13 @@
     </Style>
 
     <Style
+        TargetType="GroupBox">
+        <Setter
+            Property="BorderBrush"
+            Value="DarkBlue"/>
+    </Style>
+
+    <Style
         TargetType="TextBox">
         <Setter
             Property="BorderBrush"

@@ -40,8 +40,8 @@ namespace University
         /// <summary>
         /// Авторизация
         /// </summary>
-        /// <param name="username">ИМя пользователя</param>
-        /// <param name="password">ПАроль</param>
+        /// <param name="username">Имя пользователя</param>
+        /// <param name="password">Пароль</param>
         /// <returns></returns>
         public static bool Initialize(string username, string password)
         {
@@ -56,7 +56,7 @@ namespace University
             {
                 _data = data;
                 CurrentUser = user;
-                WorkOkAuth();
+                //WorkOkAuth();
                 return true; 
             }
         }

@@ -34,7 +34,7 @@
                 Margin="343,126,0,0" 
                 Text="{Binding Path=Login, UpdateSourceTrigger=PropertyChanged}" />
             <PasswordBox 
-                TabIndex="0"
+                x:Name="passwordBox"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Height="23" 

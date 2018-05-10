@@ -111,14 +111,12 @@ namespace Data.Astu
         /// Идентификатор группы
         /// </summary>
         [DbFieldInfo("GRP")]
-        
         public string GroupId { get; set; }
 
         /// <summary>
         /// Идентификатор статуса студента
         /// </summary>
         [DbFieldInfo("ID_STAT")]
-        
         public string StatusId { get; set; }
 
         /// <summary>
@@ -137,56 +135,48 @@ namespace Data.Astu
         /// Идентификатор источника финансирования
         /// </summary>
         [DbFieldInfo("KOB")]
-        
         public string FinanceSourceId { get; set; }
 
         /// <summary>
         /// Идентификатор формы обучения
         /// </summary>
         [DbFieldInfo("FRM")]
-        
         public string EducationFormId { get; set; }
 
         /// <summary>
         /// Идентификатор факультета
         /// </summary>
         [DbFieldInfo("FAK")]
-        
         public string FacultyId { get; set; }
 
         /// <summary>
         /// Идентификатор направления подготовки
         /// </summary>
         [DbFieldInfo("SPC")]
-        
         public string DirectionId { get; set; }
 
         /// <summary>
         /// Идентификатор гражданства
         /// </summary>
         [DbFieldInfo("GOS")]
-        
         public string CitizenshipId { get; set; }
 
         /// <summary>
         /// Идентификатор изучаемого иностранного языка
         /// </summary>
         [DbFieldInfo("LNG")]
-        
         public string ForeignLanguageId { get; set; }
 
         /// <summary>
         /// Идентификатор вида стипендии
         /// </summary>
         [DbFieldInfo("VST")]
-        
         public string GrantTypeId { get; set; }
 
         /// <summary>
         /// Идентификатор вида документа об образовании
         /// </summary>
         [DbFieldInfo("VDO")]
-        
         public string EducationDocumentTypeId { get; set; }
 
         #endregion

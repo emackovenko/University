@@ -35,13 +35,13 @@ namespace University.ViewModel
 
         public bool ShowEditor(ViewModelBase viewModel)
         {
-            var editorWindow = new EditorWindow(viewModel);
+            var editorWindow = new ViewerWindow(viewModel);
             return editorWindow.ShowDialog() ?? false;
         }
 
         public bool ShowEditor(ViewModelBase viewModel, IEntityValidator validator)
         {
-            var editorWindow = new EditorWindow(viewModel, validator);
+            var editorWindow = new ViewerWindow(viewModel, validator);
             return editorWindow.ShowDialog() ?? false;
         }
     }

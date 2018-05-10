@@ -165,9 +165,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Administration\UserListViewModel.cs" />
     <Compile Include="ViewModel\Contingent\ActiveStudentsViewModel.cs" />
-    <Compile Include="ViewService\EditorWindow.xaml.cs">
-      <DependentUpon>EditorWindow.xaml</DependentUpon>
+    <Compile Include="ViewModel\TrainingDivision\EducationPlanImporterViewModel.cs" />
+    <Compile Include="ViewModel\TrainingDivision\EducationPlanListViewModel.cs" />
+    <Compile Include="ViewService\ViewerWindow.xaml.cs">
+      <DependentUpon>ViewerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewService\ProtectedView.cs" />
     <Compile Include="ExceptionDispatcher.cs" />
@@ -177,6 +180,13 @@
     <Compile Include="ViewModel\Common\DesktopViewModel.cs" />
     <Compile Include="ViewModel\Validation\IEntityValidator.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewService\ViewInvoker.cs" />
+    <Compile Include="View\Administration\AdministrationWorkspace.xaml.cs">
+      <DependentUpon>AdministrationWorkspace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Administration\Pages\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Auth\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
@@ -189,7 +199,24 @@
     <Compile Include="View\Contingent\Pages\ActiveStudents.xaml.cs">
       <DependentUpon>ActiveStudents.xaml</DependentUpon>
     </Compile>
-    <Page Include="ViewService\EditorWindow.xaml">
+    <Compile Include="View\TrainingDivision\EducationPlanImporterView.xaml.cs">
+      <DependentUpon>EducationPlanImporterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingDivision\Pages\EducationPlanList.xaml.cs">
+      <DependentUpon>EducationPlanList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingDivision\TrainingDivisionWorkspace.xaml.cs">
+      <DependentUpon>TrainingDivisionWorkspace.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ViewService\ViewerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administration\AdministrationWorkspace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Administration\Pages\UserList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +249,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Contingent\Pages\ActiveStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingDivision\EducationPlanImporterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingDivision\Pages\EducationPlanList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingDivision\TrainingDivisionWorkspace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

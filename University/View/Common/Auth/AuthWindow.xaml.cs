@@ -24,6 +24,7 @@ namespace University.View.Common.Auth
         {
             InitializeComponent();
             Messenger.Default.Register<string>(this, MessageHandler);
+            passwordBox.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -19,14 +19,14 @@ namespace University.ViewService
     /// <summary>
     /// Логика взаимодействия для EditorWindow.xaml
     /// </summary>
-    public partial class EditorWindow : Window
+    public partial class ViewerWindow : Window
     {
-        public EditorWindow()
+        public ViewerWindow()
         {
             InitializeComponent();
         }
 
-        public EditorWindow(object dataContext)
+        public ViewerWindow(object dataContext)
             : this ()
         {
             DataContext = dataContext;
@@ -34,9 +34,11 @@ namespace University.ViewService
             // предполагаем, что наша МП (модель представления - ViewModel) названа в формате "SomenameViewModel"
             // Ищем вьюху класса UserControl с именем в формате "SomenameView"
             string viewName = dataContext.GetType().Name.Replace("ViewModel", "View");
+            // todo не работает!!!
+            viewName = string.Format("{0}.{1}", GetType().AssemblyQualifiedName, viewName);
 
             // Вызываем ее конструктор
-            var viewType = Type.GetType(viewName, false);
+            var viewType = Type.GetType(string.Format("{0}.{1}", GetType().AssemblyQualifiedName, viewName), false);
             if (viewType == null)
             {
                 throw new InvalidOperationException("Не найдено представление для редактирования данной модели.");
@@ -48,7 +50,7 @@ namespace University.ViewService
             editingArea.Children.Add(view as UIElement);
         }
         
-        public EditorWindow(object dataContext, IEntityValidator validator)
+        public ViewerWindow(object dataContext, IEntityValidator validator)
             : this (dataContext)
         {
             _validator = validator;
@@ -56,12 +58,12 @@ namespace University.ViewService
 
         IEntityValidator _validator;
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (_validator != null)
             {

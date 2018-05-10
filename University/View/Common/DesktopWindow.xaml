@@ -8,6 +8,8 @@
         xmlns:c="clr-namespace:WpfExtensions.Controls;assembly=WpfExtensions"
         xmlns:vs="clr-namespace:University.ViewService"
         xmlns:contingent="clr-namespace:University.View.Contingent"
+        xmlns:admin="clr-namespace:University.View.Administration"
+        xmlns:training="clr-namespace:University.View.TrainingDivision"
         mc:Ignorable="d"
         Title="Рубцовский индустриальный институт" Height="406.4" Width="688.2" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
@@ -17,15 +19,22 @@
         <TabControl
             Margin="0,0,0,25">
             <c:ExTabItem
-                vs:ProtectedView.Identity="Contingent"
                 Title="Контингент студентов"
                 Icon="/ResourceLibrary;component/Images/students.png">
                 <contingent:ContingentWorkspace/>
             </c:ExTabItem>
             <c:ExTabItem
                 vs:ProtectedView.Identity="Administration"
+                Title="Учебный отдел"
+                Icon="/ResourceLibrary;component/Images/planning.png">
+                <training:TrainingDivisionWorkspace/>
+            </c:ExTabItem>
+            <c:ExTabItem
+                vs:ProtectedView.Identity="Administration"
                 Title="Администрирование"
-                Icon="/ResourceLibrary;component/Images/hacker.png"></c:ExTabItem>
+                Icon="/ResourceLibrary;component/Images/hacker.png">
+                <admin:AdministrationWorkspace/>
+            </c:ExTabItem>
         </TabControl>
         <StatusBar
             Height="21"
