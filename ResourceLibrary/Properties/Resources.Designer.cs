@@ -59,5 +59,26 @@ namespace ResourceLibrary.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///  &lt;xs:element name=&quot;Документ&quot;&gt;
+        ///    &lt;xs:complexType&gt;
+        ///      &lt;xs:sequence&gt;
+        ///        &lt;xs:element name=&quot;План&quot;&gt;
+        ///          &lt;xs:complexType&gt;
+        ///            &lt;xs:sequence&gt;
+        ///              &lt;xs:element name=&quot;Титул&quot;&gt;
+        ///                &lt;xs:complexType&gt;
+        ///                  &lt;xs:sequence&gt;
+        ///                    &lt;xs:element name=&quot;АтрибутыЦикловНов&quot;&gt;
+        ///                   [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string EducationPlanCustomScheme {
+            get {
+                return ResourceManager.GetString("EducationPlanCustomScheme", resourceCulture);
+            }
+        }
     }
 }

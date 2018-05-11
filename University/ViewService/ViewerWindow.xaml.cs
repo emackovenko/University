@@ -29,16 +29,16 @@ namespace University.ViewService
         public ViewerWindow(object dataContext)
             : this ()
         {
-            DataContext = dataContext;
+            // TODO: переделать это говно
 
-            // предполагаем, что наша МП (модель представления - ViewModel) названа в формате "SomenameViewModel"
-            // Ищем вьюху класса UserControl с именем в формате "SomenameView"
-            string viewName = dataContext.GetType().Name.Replace("ViewModel", "View");
-            // todo не работает!!!
-            viewName = string.Format("{0}.{1}", GetType().AssemblyQualifiedName, viewName);
+            DataContext = dataContext;
+            
+            // предполагаем, что наша МП (модель представления - ViewModel) названа в формате "SomenameViewModel" и находится в ViewModel=>SomeNamespace
+            // Ищем вьюху класса UserControl с именем в формате "SomenameView" в View=>SomeNamespace
+            string viewName = dataContext.GetType().FullName.Replace("ViewModel", "View");
 
             // Вызываем ее конструктор
-            var viewType = Type.GetType(string.Format("{0}.{1}", GetType().AssemblyQualifiedName, viewName), false);
+            var viewType = Type.GetType(string.Format("{0}", viewName), false);
             if (viewType == null)
             {
                 throw new InvalidOperationException("Не найдено представление для редактирования данной модели.");
@@ -46,7 +46,7 @@ namespace University.ViewService
             var ci = viewType.GetConstructor(new Type[] { });
             var view = ci.Invoke(new object[] { });
 
-            // встраиваем в грид
+            //встраиваем в грид
             editingArea.Children.Add(view as UIElement);
         }
         

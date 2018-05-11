@@ -65,6 +65,16 @@ namespace Data.University
         public Direction Direction { get; set; }
 
         /// <summary>
+        /// Идентификатор уровня образования
+        /// </summary>
+        public int? EducationLevelId { get; set; }
+
+        /// <summary>
+        /// Уровень образования
+        /// </summary>
+        public EducationLevel EducationLevel { get; set; }
+
+        /// <summary>
         /// Флаг - ускоренное обучение
         /// </summary>
         public bool? IsAcceleratedLearning { get; set; }

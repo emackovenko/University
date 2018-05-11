@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
+  <!--===============================================-->
+  <!--Базовый тип для узла без потомков и аттрибутов -->
+  <xsd:complexType name="Пробка">
+        <xsd:sequence  minOccurs="0">
+        <xsd:element name="ДырОтБуб"/>
+      </xsd:sequence>
+  </xsd:complexType>  
+  <!-- Для создания универсальной схемы необходимо понимать следующее :
+       1) Если у концевого узла ничего нет, тогда для успешной проверки любого XML 
+          у этого узла необходимо указать type="Пробка". (т.е. type="Пробка" везде добавил aaedit)
+       2) Если у концевого узла есть только attribute, этого хватит для успешной проверки любого XML. 
+       3) Еще не понял где лучше показывать нулевое количество :
+          sequence minOccurs="0"
+              element name="ДипломниковПоКафедрам" minOccurs="0"?
+              
+       4) При создании следующей xsd+i помнить о том, что при добавлении нового элемента он обязан быть с minOccurs="0",
+          иначе все прошлые XML перестанут соответствовать новой  схеме.
+       5) При создании следующей xsd+i помнить о пункте 1.
+    ==================================================================-->
+   <!--при внесении изменений добавлять комментарий-->
+
+        <!-- aaedit 01 old -->
+        <!-- (старый код оставлять )xsd:element name="ЧленГАК" maxOccurs="unbounded" -->
+        <!-- aaedit 01 -->
+
+        <!-- aaedit 02 new -->
+        <!-- aaedit 02 -->
+
+  <xsd:element name="Документ">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="План">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Титул">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="АтрибутыЦикловНов">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Цикл" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Аббревиатура" type="xsd:string"/>
+                              <xsd:attribute name="Название" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="АтрибутыЦиклов">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Цикл" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Абревиатура" type="xsd:string"/>
+                              <xsd:attribute name="Название" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Утверждение">
+                      <xsd:complexType>
+                        <xsd:attribute name="Дата" type="xsd:string"/>
+                        <xsd:attribute name="НомПротокола" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Специальности">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Специальность" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Название" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="ВоеннаяСпециальность" type="Пробка"/>
+                    <xsd:element minOccurs="0" name="ВоеннаяСпециализация" type="Пробка"/>
+                    <xsd:element minOccurs="0" name="ПредназначениеВыпускников" type="Пробка"/>
+                    <xsd:element name="Квалификации">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Квалификация">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Название" type="xsd:string"/>
+                              <xsd:attribute name="СрокОбучения" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ВидыДеятельности">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ВидДеятельности" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Название" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Разработчики">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Разработчик" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="ФИО" type="xsd:string"/>
+                              <xsd:attribute name="Должность" type="xsd:string"/>
+                              <xsd:attribute name="Активный" type="xsd:integer"/>
+                              <xsd:attribute name="Звание" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ПрофСтандарты" minOccurs="0" type="Пробка"/>
+                    <xsd:element name="ГрафикУчПроцесса">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Курс" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <!--aaedit первое стандартное изменение-->                              
+                                <xsd:element name="Семестр" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="СтрНедТО" type="xsd:string"/>
+                                    <xsd:attribute name="НомерПервойНедели" type="xsd:integer"/>
+                                    <xsd:attribute name="НомерПервогоЭлемента" type="xsd:integer"/>
+                                    <xsd:attribute name="График" type="xsd:string"/>
+                                    <xsd:attribute name="График2" type="xsd:string"/>
+                                    <xsd:attribute name="График3" type="xsd:string"/>
+                                    <xsd:attribute name="График4" type="xsd:string"/>
+                                    <xsd:attribute name="График5" type="xsd:string"/>
+                                    <xsd:attribute name="График6" type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="График" type="xsd:string"/>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Студентов" type="xsd:integer"/>
+                              <xsd:attribute name="Групп" type="xsd:integer"/>
+                              <xsd:attribute name="ООПет" type="xsd:float"/>
+                              <xsd:attribute name="МаксНагр1" type="xsd:float"/>
+                              <xsd:attribute name="МаксНагр2" type="xsd:float"/>
+                              <xsd:attribute name="КаникулНед" type="xsd:integer"/>
+                              <xsd:attribute name="КаникулДн" type="xsd:integer"/>
+                              <xsd:attribute name="График2" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="ПерваяПереаттестованнаяНеделя" type="xsd:integer"/>
+                        <xsd:attribute name="ПоследняяПереаттестованнаяНеделя" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="ПолноеИмяПлана" type="xsd:string"/>
+                  <xsd:attribute name="ИмяПлана" type="xsd:string"/>
+                  <xsd:attribute name="НомерПользователя" type="xsd:integer"/>
+                  <xsd:attribute name="ИмяВуза" type="xsd:string"/>
+                  <xsd:attribute name="ИмяВуза2" type="xsd:string"/>
+                  <xsd:attribute name="Головная" type="xsd:string"/>
+                  <xsd:attribute name="КодКафедры" type="xsd:string"/>
+                  <xsd:attribute name="Факультет" type="xsd:string"/>
+                  <xsd:attribute name="ПоследнийШифр" type="xsd:string"/>
+                  <xsd:attribute name="ГодНачалаПодготовки" type="xsd:integer"/>
+                  <xsd:attribute name="ВключатьЭкВСуммуЧасов" type="xsd:integer"/>
+                  <xsd:attribute name="ДвИГА" type="xsd:integer"/>
+                  <xsd:attribute name="ГвИГА" type="xsd:integer"/>
+                  <xsd:attribute name="DetailGIA" type="xsd:integer"/>
+                  <xsd:attribute name="ИГА_ЗЕТвНеделе" type="xsd:float"/>
+                  <xsd:attribute name="ИГА_ЧасовВЗЕТ" type="xsd:integer"/>
+                  <xsd:attribute name="КСР_ИЗ" type="xsd:string"/>
+                  <xsd:attribute name="ИГА_Кафедра" type="xsd:integer"/>
+                  <xsd:attribute name="Программа" type="xsd:integer"/>
+                  <xsd:attribute name="ООПет" type="xsd:integer"/>
+                  <xsd:attribute name="Интер" type="xsd:float"/>
+                  <xsd:attribute name="Лекц" type="xsd:float"/>
+                  <xsd:attribute name="ДВВ" type="xsd:float"/>
+                  <xsd:attribute name="МаксНагр" type="xsd:float"/>
+                  <xsd:attribute name="Уровень" type="xsd:integer"/>
+                  <xsd:attribute name="ВидПлана" type="xsd:integer"/>
+                  <xsd:attribute name="КодУровня" type="xsd:string"/>
+                  <xsd:attribute name="СеместровНаКурсе" type="xsd:integer"/>
+                  <xsd:attribute name="СессийНаКурсе" type="xsd:integer"/>
+                  <xsd:attribute name="ЭлементовВНеделе" type="xsd:integer"/>
+                  <xsd:attribute name="ДатаГОСа" type="xsd:string"/>
+                  <xsd:attribute name="ДокументГОСа" type="xsd:integer"/>
+                  <xsd:attribute name="ТипГОСа" type="xsd:string"/>
+                  <xsd:attribute name="Приложение" type="xsd:string"/>
+                  <xsd:attribute name="ДатаПриложения" type="xsd:string"/>
+                  <xsd:attribute name="ВерсияПриложения" type="xsd:string"/>
+                  <xsd:attribute name="РуководительНПКаф" type="xsd:integer"/>
+                  <xsd:attribute name="WhoRatif" type="xsd:string"/>
+                  <xsd:attribute name="АббревиатураПрофиля" type="xsd:string"/>
+                  <xsd:attribute name="СокрКонтрольФакт" type="xsd:integer"/>
+                  <xsd:attribute name="FacType" type="xsd:string"/>                  
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="СтрокиПлана">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Строка" maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:sequence >
+                          <xsd:element name="Сем"  minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="VZ" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="ID" type="xsd:integer"/>
+                                    <xsd:attribute name="H" type="xsd:integer"/>
+                                    <xsd:attribute name="IntH" type="xsd:integer"/>
+                                    <xsd:attribute name="PjH" type="xsd:float"/>
+                                    <!-- new БТИ -->
+                                    <xsd:attribute name="Dist" type="xsd:integer"/>
+                                    <!-- new БТИ -->
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Лек" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтЛек" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектЛекВНед" type="xsd:float"/>
+                              <xsd:attribute name="Пр" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтПр" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектПрВНед" type="xsd:float"/>
+                              <xsd:attribute name="СРС" type="xsd:integer"/>
+                              <xsd:attribute name="ЧасЭкз" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТ" type="xsd:float"/>
+                              <xsd:attribute name="ПроектЗЕТ" type="xsd:float"/>
+                              <xsd:attribute name="Экз" type="xsd:integer"/>
+                              <xsd:attribute name="Зач" type="xsd:integer"/>
+                              <xsd:attribute name="Лаб" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектЛабВНед" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтЛаб" type="xsd:integer"/>
+                              <xsd:attribute name="РГР" type="xsd:integer"/>
+                              <xsd:attribute name="КП" type="xsd:integer"/>
+                              <xsd:attribute name="КР" type="xsd:integer"/>
+                              <xsd:attribute name="КСР" type="xsd:integer"/>     
+                              <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                              <!-- new БТИ -->
+                              <xsd:attribute name="Реф" type="xsd:integer"/>
+                              <xsd:attribute name="КонтрРаб" type="xsd:integer"/>
+                              <xsd:attribute name="Контр" type="xsd:integer"/>
+                              <xsd:attribute name="Эссе" type="xsd:integer"/>
+                              <!-- new БТИ -->
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Курс" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="VZ" maxOccurs="unbounded" minOccurs="0">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="ID" type="xsd:integer"/>
+                                    <xsd:attribute name="H" type="xsd:integer"/>
+                                    <xsd:attribute name="IntH" type="xsd:integer"/>
+                                    <xsd:attribute name="PjH" type="xsd:integer"/>
+                                    <xsd:attribute name="Dist" type="xsd:integer"/>                                    
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Сессия" maxOccurs="unbounded" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo>
+                                        <jaxb:property name="Сессия1"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>                                
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="VZ" minOccurs="0" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="ID" type="xsd:integer"/>
+                                          <xsd:attribute name="H" type="xsd:integer"/>
+                                          <xsd:attribute name="IntH" type="xsd:integer"/>
+                                          <xsd:attribute name="Dist" type="xsd:integer"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Лек" type="xsd:integer"/>
+                                    <xsd:attribute name="Пр" type="xsd:integer"/>
+                                    <xsd:attribute name="СРС" type="xsd:integer"/>
+                                    <xsd:attribute name="ЧасЭкз" type="xsd:integer"/>
+                                    <xsd:attribute name="Экз" type="xsd:integer"/>
+                                    <xsd:attribute name="ВидКонтр" type="xsd:string"/>
+                                    <xsd:attribute name="ИнтЛек" type="xsd:integer"/>
+                                    <xsd:attribute name="Лаб" type="xsd:integer"/>
+                                    <xsd:attribute name="ИнтЛаб" type="xsd:integer"/>
+                                    <xsd:attribute name="РГР" type="xsd:integer"/>
+                                    <xsd:attribute name="Зач" type="xsd:integer"/>
+                                    <xsd:attribute name="ИнтПр" type="xsd:integer"/>
+                                    <xsd:attribute name="КП" type="xsd:integer"/>
+                                    <xsd:attribute name="КР" type="xsd:integer"/>
+                                    <xsd:attribute name="КонтрРаб" type="xsd:integer"/>
+                                    <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Лек" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтЛек" type="xsd:integer"/>
+                              <xsd:attribute name="Пр" type="xsd:integer"/>
+                              <xsd:attribute name="СРС" type="xsd:integer"/>
+                              <xsd:attribute name="ЧасЭкз" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТ" type="xsd:float"/>
+                              <xsd:attribute name="Экз" type="xsd:integer"/>
+                              <xsd:attribute name="Лаб" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтЛаб" type="xsd:integer"/>
+                              <xsd:attribute name="РГР" type="xsd:integer"/>
+                              <xsd:attribute name="ИнтПр" type="xsd:integer"/>
+                              <xsd:attribute name="Зач" type="xsd:integer"/>
+                              <xsd:attribute name="КП" type="xsd:integer"/>
+                              <xsd:attribute name="КР" type="xsd:integer"/>
+                              <xsd:attribute name="КонтрРаб" type="xsd:integer"/>
+                              <xsd:attribute name="Контр" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектЗЕТ" type="xsd:integer"/>
+                              <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектЛекВНед" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектПрВНед" type="xsd:integer"/>
+                              <xsd:attribute name="ПроектЛабВНед" type="xsd:integer"/>                              
+                            </xsd:complexType>
+                          </xsd:element>                          
+                          <xsd:element name="КурсовойПроект" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="РаспределениеСтудентовПоКафедрам" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Ном" type="xsd:integer"/>
+                                          <xsd:attribute name="Студентов" type="xsd:integer"/>
+                                          <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Курс" type="xsd:integer"/>
+                                    <xsd:attribute name="Сем" type="xsd:integer"/>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="КурсоваяРабота" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="РаспределениеСтудентовПоКафедрам" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Ном" type="xsd:integer"/>
+                                          <xsd:attribute name="Студентов" type="xsd:integer"/>
+                                          <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Курс" type="xsd:integer"/>
+                                    <xsd:attribute name="Сем" type="xsd:integer"/>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>                          
+                        </xsd:sequence>
+                        <xsd:attribute name="Дис" type="xsd:string"/>
+                        <xsd:attribute name="НовЦикл" type="xsd:string"/>
+                        <xsd:attribute name="НовИдДисциплины" type="xsd:string"/>
+                        <xsd:attribute name="Цикл" type="xsd:string"/>
+                        <xsd:attribute name="ИдетификаторВидаПлана" type="xsd:integer"/>
+                        <xsd:attribute name="ИдетификаторДисциплины" type="xsd:string"/>
+                        <xsd:attribute name="ГОС" type="xsd:integer"/>
+                        <xsd:attribute name="СР" type="xsd:integer"/>
+                        <xsd:attribute name="ЧасовИнтер" type="xsd:integer"/>
+                        <xsd:attribute name="КомпетенцииКоды" type="xsd:string"/>
+                        <xsd:attribute name="Компетенции" type="xsd:string"/>
+                        <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                        <xsd:attribute name="ПодлежитИзучению" type="xsd:integer"/>
+                        <xsd:attribute name="КредитовНаДисциплину" type="xsd:integer"/>
+                        <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                        <xsd:attribute name="СемЭкз" type="xsd:string"/>
+                        <xsd:attribute name="СемЗач" type="xsd:string"/>
+                        <xsd:attribute name="СемЗачО" type="xsd:string"/>
+                        <xsd:attribute name="НовСемЗач" type="xsd:string"/>
+                        <xsd:attribute name="СемРГР" type="xsd:string"/>
+                        <xsd:attribute name="СемКП" type="xsd:string"/>
+                        <xsd:attribute name="НеСчитатьКонтроль" type="xsd:integer"/>
+                        <xsd:attribute name="СемКР" type="xsd:string"/>
+                        <xsd:attribute name="ДисциплинаДляРазделов" type="xsd:integer"/>
+                        <xsd:attribute name="ДисцплинаДляРазделов" type="xsd:integer"/>
+                        <xsd:attribute name="Раздел" type="xsd:integer"/>
+                        <xsd:attribute name="ЧасовДист" type="xsd:integer"/>
+                        <!-- new БТИ -->
+                        <xsd:attribute name="СемРеф" type="xsd:integer"/>
+                        <xsd:attribute name="СемЭссе" type="xsd:integer"/>
+                        <!-- new БТИ -->
+                     </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="ЗЕТ">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Цикл1">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Цикл2" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Цикл3" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Раздел4" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN" type="xsd:integer"/>
+                        <xsd:attribute name="MAX" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Раздел5">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN" type="xsd:integer"/>
+                        <xsd:attribute name="MAX" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Раздел6">
+                      <xsd:complexType>
+                        <xsd:attribute name="MIN" type="xsd:integer"/>
+                        <xsd:attribute name="MAX" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_1" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_1" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_2" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_2" type="xsd:integer"/>
+                        <xsd:attribute name="MIN_3" type="xsd:integer"/>
+                        <xsd:attribute name="MAX_3" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Факультативы">
+                      <xsd:complexType>
+                        <xsd:attribute name="Значение" type="xsd:integer"/>
+                        <xsd:attribute name="MAX" type="xsd:integer"/>
+                        <xsd:attribute name="MIN" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              
+              <xsd:element name="Компетенции">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Строка" minOccurs="0" maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:attribute name="Код" type="xsd:integer"/>
+                        <xsd:attribute name="Индекс" type="xsd:string"/>
+                        <xsd:attribute name="Содержание" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="ДопКомпетенции">
+                <xsd:complexType>
+                  <xsd:attribute name="ИГА" type="xsd:string"/>
+                  <xsd:attribute name="ВКРиГЭК" type="xsd:string"/>
+                  <xsd:attribute name="ДисМаг" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="СпецВидыРабот" minOccurs="1" maxOccurs="1" id="svr_">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="УчебПрактики" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ПрочаяПрактика" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Вид" type="xsd:string"/>
+                              <xsd:attribute name="Курс" type="xsd:integer"/>                              
+                              <xsd:attribute name="Сем" type="xsd:integer"/>
+                              <xsd:attribute name="Нед" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТЭксп" type="xsd:float"/>
+                              <xsd:attribute name="Суммировать" type="xsd:integer"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                              <xsd:attribute name="ВидНорматива" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ПрочиеПрактики" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ПрочаяПрактика" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Вид" type="xsd:string"/>
+                              <xsd:attribute name="Курс" type="xsd:integer"/>
+                              <xsd:attribute name="Сем" type="xsd:integer"/>
+                              <xsd:attribute name="Нед" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТЭксп" type="xsd:float"/>
+                              <xsd:attribute name="Суммировать" type="xsd:integer"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                              <xsd:attribute name="ВидНорматива" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>  
+                    <xsd:element name="ВыпускныеЭкзамены"  minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Экзамен" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Дис" type="xsd:string"/>
+                              <xsd:attribute name="КолЧлКаф" type="xsd:integer"/>
+                              <xsd:attribute name="Каф" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Диплом" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Консультации">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Консультация" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Название" type="xsd:string"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="РуководствоДипломниками">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ДипломниковПоКафедрам" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="РецензииДипломников">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ДипломниковПоКафедрам" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ГАК" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ЧленГАК" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Студентов" type="xsd:integer"/>
+                              <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="РуководствоКаф" type="xsd:integer"/>
+                        <xsd:attribute name="РуководствоЧасов" type="xsd:float"/>
+                        <xsd:attribute name="РецензированиеКаф" type="xsd:integer"/>                        
+                        <xsd:attribute name="РецензированиеЧасов" type="xsd:float"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ИтоговыйЭкзамен" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ЧленГЭК" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Студентов" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                        <xsd:attribute name="ЛекцииКаф" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство1" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство2" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательЧасов" type="xsd:float"/>
+                        <xsd:attribute name="ДежурствоКаф1" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ИтоговыйЭкзамен2" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ЧленГЭК" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Студентов" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                        <xsd:attribute name="ЛекцииКаф" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство1" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство2" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательЧасов" type="xsd:float"/>
+                        <xsd:attribute name="ДежурствоКаф1" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Диссертация" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Консультации" type="Пробка"/>
+                          <xsd:element name="РуководствоДиссертациейМагистра">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="МагистровПоКафедрам" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="РецензииДиссертациМагистраВнутренние">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <!-- aaedit 01 old -->
+                                <!-- xsd:element name="Рецензия" minOccurs="0" -->
+                                <xsd:element name="Рецензия" minOccurs="0" maxOccurs="unbounded">
+                                <!-- aaedit 01 -->                                
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ГАК" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ЧленГАК" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                              <xsd:attribute name="Студентов" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="РуководствоЧасов" type="xsd:integer"/>
+                        <xsd:attribute name="РуководствоКаф" type="xsd:integer"/>
+                        <xsd:attribute name="РецензированиеКаф1" type="xsd:integer"/>
+                        <xsd:attribute name="РецензированиеКаф2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ПримечанияГАК">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Примечание">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ПримечанияГЭК">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Примечание" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="СпецВидыРаботНов" minOccurs="1" maxOccurs="1" id="svrn">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="УчебПрактики" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ПрочаяПрактика" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Кафедра" minOccurs="0" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Код" type="xsd:integer"/>
+                                          <xsd:attribute name="Нед" type="xsd:integer"/>
+                                          <xsd:attribute name="Суммировать" type="xsd:integer"/>
+                                          <xsd:attribute name="Студентов" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаПодгрВНед" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаПодгр" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаСтуд" type="xsd:float"/>
+                                          <xsd:attribute name="Дней" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаСтудВНед" type="xsd:float"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланНед" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланДней" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЧасов" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЗЕТ" type="xsd:float"/>
+                                    <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                                    <xsd:attribute name="Зач" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Тип" type="xsd:integer"/>
+                              <xsd:attribute name="Вариативная" type="xsd:integer"/>
+                              <xsd:attribute name="Наименование" type="xsd:string"/>
+                              <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТэкспертное" type="xsd:float"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                              <xsd:attribute name="Компетенции" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="НИР" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <!-- xsd:element name="ПрочаяПрактика" -->
+                          <xsd:element name="ПрочаяПрактика" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Кафедра" minOccurs="0" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Код" type="xsd:integer"/>
+                                          <xsd:attribute name="Суммировать" type="xsd:integer"/>
+                                          <xsd:attribute name="Нед" type="xsd:integer"/>
+                                          <xsd:attribute name="Студентов" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаПодгрВНед" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаСтудВНед" type="xsd:integer"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланНед" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланДней" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЧасов" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЗЕТ" type="xsd:float"/>
+                                    <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                                    <xsd:attribute name="Зач" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Тип" type="xsd:integer"/>
+                              <xsd:attribute name="Вариативная" type="xsd:integer"/>
+                              <xsd:attribute name="Наименование" type="xsd:string"/>
+                              <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТэкспертное" type="xsd:float"/>
+                              <xsd:attribute name="Компетенции" type="xsd:string"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ПрочиеПрактики" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ПрочаяПрактика" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Кафедра" minOccurs="0" maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="Код" type="xsd:integer"/>
+                                          <xsd:attribute name="Нед" type="xsd:integer"/>
+                                          <xsd:attribute name="Суммировать" type="xsd:integer"/>
+                                          <xsd:attribute name="Студентов" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаПодгрВНед" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаПодгр" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаСтуд" type="xsd:float"/>
+                                          <xsd:attribute name="Дней" type="xsd:integer"/>
+                                          <xsd:attribute name="НормативНаСтудВНед" type="xsd:float"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланНед" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланДней" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЧасов" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЗЕТ" type="xsd:float"/>
+                                    <xsd:attribute name="ЗачО" type="xsd:integer"/>
+                                    <xsd:attribute name="Зач" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Тип" type="xsd:integer"/>
+                              <xsd:attribute name="Вариативная" type="xsd:integer"/>
+                              <xsd:attribute name="Наименование" type="xsd:string"/>
+                              <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТэкспертное" type="xsd:float"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                              <xsd:attribute name="Компетенции" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ДиссертацияМагистров" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                        <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ДиссерПодготовка" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ПрочаяПрактика">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланНед" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЧасов" type="xsd:integer"/>
+                                    <xsd:attribute name="ПланЗЕТ" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Тип" type="xsd:integer"/>
+                              <xsd:attribute name="Вариативная" type="xsd:integer"/>
+                              <xsd:attribute name="Наименование" type="xsd:string"/>
+                              <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                              <xsd:attribute name="ЗЕТэкспертное" type="xsd:integer"/>
+                              <xsd:attribute name="Компетенции" type="xsd:string"/>
+                              <xsd:attribute name="Кафедра" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>  
+                    <xsd:element name="ВыпускныеЭкзамены" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Экзамен" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Дис" type="xsd:string"/>
+                              <xsd:attribute name="КолЧлКаф" type="xsd:integer"/>
+                              <xsd:attribute name="Каф" type="xsd:integer"/>
+                              <xsd:attribute name="Студ" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ВКР" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Руководство">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="РуководствоК" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Консультации">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Консультация"  minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Название" type="xsd:string"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Рецензии">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Рецензия" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer" />
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="РецензииВнешние" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <!-- aaedit 02 old -->
+                                <!-- xsd:element name="РецензияВн" minOccurs="0" -->
+                                <xsd:element name="РецензияВн" minOccurs="0" maxOccurs="unbounded">
+                                <!-- aaedit 02 -->
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:integer"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ГАК" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ЧленГАК" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Студ" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                              <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                              <xsd:attribute name="СекретарьКаф" type="xsd:integer"/>
+                              <xsd:attribute name="СекретарьЧасов" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>                          
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Диплом" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Руководство">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="РуководствоК" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Консультации">
+                            <!-- new БТИ -->
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Консультация" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Название" type="xsd:string"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                            <!-- new БТИ -->
+                          </xsd:element>
+                          <xsd:element name="Рецензии">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Рецензия" minOccurs="0" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Студ" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ГАК" minOccurs="0">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="ЧленГАК" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Каф" type="xsd:integer"/>
+                                    <xsd:attribute name="Часов" type="xsd:float"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Студ" type="xsd:integer"/>
+                              <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                              <!-- new БТИ -->
+                              <xsd:attribute name="СекретарьКаф" type="xsd:integer"/>
+                              <xsd:attribute name="СекретарьЧасов" type="xsd:integer"/>
+                              <!-- new БТИ -->
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>                    
+                    <xsd:element name="ИтоговыйЭкзамен" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ЧленГЭК" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Каф" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Студ" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательЧасов" type="xsd:float"/>
+                        <xsd:attribute name="ЛекцииКаф" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство1" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство2" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф1" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ИтоговыйЭкзамен2" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ЧленГЭК" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Каф" type="xsd:integer"/>
+                              <xsd:attribute name="Часов" type="xsd:float"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Студ" type="xsd:integer"/>
+                        <xsd:attribute name="ПредседательЧасов" type="xsd:float"/>
+                        <xsd:attribute name="ПредседательКаф" type="xsd:integer"/>
+                        <xsd:attribute name="ЛекцииКаф" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство1" type="xsd:integer"/>
+                        <xsd:attribute name="Дежурство2" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф1" type="xsd:integer"/>
+                        <xsd:attribute name="ДежурствоКаф2" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              
+              <xsd:element name="Нормы">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Прочее">
+                      <xsd:complexType>
+                        <xsd:attribute name="УчащихсяВПодгруппе" type="xsd:integer"/>
+                        <xsd:attribute name="АудВНед" type="xsd:integer"/>
+                        <xsd:attribute name="АудВНедПослКурс" type="xsd:integer"/>
+                        <xsd:attribute name="КратностьАудЧасов" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ЗЕТ">
+                      <xsd:complexType>
+                        <xsd:attribute name="Точность" type="xsd:float"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Контроль">
+                      <xsd:complexType>
+                        <xsd:attribute name="ЧасовНаЭкзамен" type="xsd:integer"/>
+                        <xsd:attribute name="ЧасовНаЗачет" type="xsd:integer"/>
+                        <xsd:attribute name="ЧасовНаЗачетОц" type="xsd:integer"/>
+                        <xsd:attribute name="ЭкзаменовВСеместре" type="xsd:integer"/>
+                        <xsd:attribute name="ЗачетовВСеместре" type="xsd:integer"/>
+                        <xsd:attribute name="КурсовыхВСеместре" type="xsd:integer"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ИГА">
+                      <xsd:complexType>
+                        <xsd:attribute name="ЧасовВЗЕТ" type="xsd:integer"/>
+                        <xsd:attribute name="ЗЕТвНеделе" type="xsd:float"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Недели">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Курс" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Семестр" maxOccurs="unbounded">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="НомПервойНед" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Сессия" maxOccurs="unbounded" minOccurs="0">
+                                <xsd:annotation>
+                                    <xsd:appinfo>
+                                        <jaxb:property name="Сессия2"/>
+                                    </xsd:appinfo>
+                                </xsd:annotation>                                
+                                  <xsd:complexType>
+                                    <xsd:attribute name="Ном" type="xsd:integer"/>
+                                    <xsd:attribute name="Начало" type="xsd:string"/>
+                                    <xsd:attribute name="Конец" type="xsd:string"/>
+                                    <xsd:attribute name="Дней" type="xsd:integer"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="Сессия" type="xsd:integer"/>
+                              <xsd:attribute name="Проезд" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>                          
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="АПП">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Курс" maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Семестр" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="Ном" type="xsd:integer"/>
+                              <xsd:attribute name="ЧасовФизК" type="xsd:integer"/>
+                              <xsd:attribute name="НедельТОкрат" type="xsd:integer"/>
+                              <xsd:attribute name="ЗЕТФизК" type="xsd:float"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="Ном" type="xsd:integer"/>
+                        <xsd:attribute name="ИзучФизК" type="xsd:integer"/>
+                        <xsd:attribute name="ЗЕТФизК" type="xsd:float"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="VZ" type="xsd:string"/>
+                  <xsd:attribute name="ЧасыЗЕТФизКАвто" type="xsd:integer"/>
+                  <xsd:attribute name="СохранятьПараметры" type="xsd:integer"/>
+                  <xsd:attribute name="ЭкзМинЧасов" type="xsd:integer"/>
+                  <xsd:attribute name="ЧетныеЧасы" type="xsd:integer"/>
+                  <xsd:attribute name="ЗЕТцелые" type="xsd:integer"/>
+                  <xsd:attribute name="ЗЕТФизК200" type="xsd:integer"/>
+                  <xsd:attribute name="Режим" type="xsd:integer"/>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="ПараметрыПроверки" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ArrKratNed">
+                      <xsd:complexType>
+                        <xsd:sequence minOccurs="0">
+                          <xsd:element name="item" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="value" type="xsd:integer"/>
+                              <xsd:attribute name="num" type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="count" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_SrokO" type="xsd:integer"/>
+                  <xsd:attribute name="SrokOYear" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_OOPItog" type="xsd:integer"/>
+                  <xsd:attribute name="OOPItog" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_OOPyear" type="xsd:integer"/>
+                  <xsd:attribute name="OOPyear" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_ZETdelta" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DVVpersent" type="xsd:integer"/>
+                  <xsd:attribute name="DVVpersent30Min" type="xsd:integer"/>
+                  <xsd:attribute name="DVVpersent30Max" type="xsd:integer"/>
+                  <xsd:attribute name="BasePartMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_ZETDiscMin" type="xsd:integer"/>
+                  <xsd:attribute name="ZETDiscMin" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscZETIsInt" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_ZETExpertTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscZETExpertTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HinW54" type="xsd:integer"/>
+                  <xsd:attribute name="HinW54" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HinWAudit" type="xsd:integer"/>
+                  <xsd:attribute name="HinWAuditMax" type="xsd:integer"/>
+                  <xsd:attribute name="HinWAuditSrMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_Lect" type="xsd:integer"/>
+                  <xsd:attribute name="LectMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_Inter" type="xsd:integer"/>
+                  <xsd:attribute name="InterMin" type="xsd:integer"/>
+                  <xsd:attribute name="InterMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_ZETAndHoursIsTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscZETAndHoursIsTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscSemZETAndHoursIsTrue" type="xsd:integer"/>
+                  <xsd:attribute name="AudetAllMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_EqZET36" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_CntrlEx" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlExMax" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlExSemMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_CntrlZach" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlZachMax" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlZachSemMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_CntrlExHours" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlExHoursMin" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlExHoursMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_CntrlHasHours" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_CntrlHasHoursItogS" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursKratNed" type="xsd:integer"/>
+                  <xsd:attribute name="HoursKSRpSRSMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursKSRForKP" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursAudSemTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursSRSSemTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_PracticsWeeksCorrrect" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HolidaysWeeks" type="xsd:integer"/>
+                  <xsd:attribute name="HolidaysWeeksMin" type="xsd:integer"/>
+                  <xsd:attribute name="HolidaysWeeksMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HolidaysWinterWeeks" type="xsd:integer"/>
+                  <xsd:attribute name="HolidaysWinterWeeksMin" type="xsd:integer"/>
+                  <xsd:attribute name="HolidaysWinterWeeksMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscAltTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscCompTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscCompDBTrue" type="xsd:integer"/>
+                  <xsd:attribute name="DiscCompHandMadeOK" type="xsd:integer"/>
+                  <xsd:attribute name="DiscCompHandMadePK" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscFatalCoincidence" type="xsd:integer"/>
+                  <xsd:attribute name="DiscPhysCZET" type="xsd:integer"/>
+                  <xsd:attribute name="DiscPhysCHours" type="xsd:integer"/>
+                  <xsd:attribute name="DiscPhysCHoursPractices" type="xsd:integer"/>
+                  <xsd:attribute name="DiscJustificationZETLocationForCoursesPosition" type="xsd:integer"/>
+                  <xsd:attribute name="DiscJustificationZETLocationForCoursesOneZET" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursKratNedFirstPos" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_FillTitle" type="xsd:integer"/>
+                  <xsd:attribute name="SrokOMonth" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DVVpersent1p3" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HinWAuditSr" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_AuditAll" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_EqZETDis32_38" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlKPMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_BasePart" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursKSRForKR" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscZETYearIsInt" type="xsd:integer"/>
+                  <xsd:attribute name="HoursKSRForKPMin" type="xsd:integer"/>
+                  <xsd:attribute name="HoursKSRForKRMin" type="xsd:integer"/>
+                  <xsd:attribute name="HoursKSRForKRMax" type="xsd:integer"/>
+                  <xsd:attribute name="HoursKSRForKPMax" type="xsd:integer"/>
+                  <xsd:attribute name="CntrlKRMax" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscKafTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscJustificationZETLocationForCourses" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscPhysCHoursPractices" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscPhysCHours" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscPhysCZET" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscDiscMust" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscCompHandMadeTrue" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_DiscMinOneCompTrue" type="xsd:integer"/> 
+                  <xsd:attribute name="EqZET36" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursCouple" type="xsd:integer"/>    
+                  <xsd:attribute name="ZET_Pereat" type="xsd:integer"/>
+                  <xsd:attribute name="HinWAuditMin" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursAudSemTrueWithKSR" type="xsd:integer"/>
+                  <xsd:attribute name="Flag_HoursSRSSemTrueWithKSR" type="xsd:integer"/>
+                  <!-- new БТИ -->
+                  <xsd:attribute name="Flag_HoursKSRpSRS" type="xsd:integer"/>
+                  <!-- new БТИ -->
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="Примечание">
+                <xsd:complexType>
+                  <xsd:attribute name="note" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="ПодТип" type="xsd:string"/>
+            <xsd:attribute name="Шифр" type="xsd:string"/>
+            <xsd:attribute name="ОбразовательнаяПрограмма" type="xsd:string"/>
+            <xsd:attribute name="ФормаОбучения" type="xsd:string"/>
+            <xsd:attribute name="УровеньОбразования" type="xsd:string"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="Тип" type="xsd:string"/>
+      <xsd:attribute name="PrevName" type="xsd:string"/>
+      <xsd:attribute name="PrevWrite" type="xsd:string"/>
+      <xsd:attribute name="LastName" type="xsd:string"/>
+      <xsd:attribute name="LastWrite" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

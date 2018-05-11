@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+using System.IO;
 
 namespace University.ViewModel.TrainingDivision
 {
@@ -13,6 +14,10 @@ namespace University.ViewModel.TrainingDivision
 
         public string PlanFileName { get; set; }
 
+        public bool AddingObectsPermission { get; set; }
+
+        public bool OpenPlanEditorPermission { get; set; }
+        
         StringBuilder _logText;
 
         public string Log
@@ -39,6 +44,8 @@ namespace University.ViewModel.TrainingDivision
 
         public RelayCommand OpenFileCommand { get => new RelayCommand(OpenFile); }
 
+        public RelayCommand ImportCommand { get => new RelayCommand(Import); }
+
         #endregion
 
         #region Methods
@@ -51,19 +58,44 @@ namespace University.ViewModel.TrainingDivision
                 CheckFileExists = true,
                 Multiselect = false
             };
+
             if (openDialog.ShowDialog() ?? false)
             {
                 PlanFileName = openDialog.FileName;
             }
         }
 
+        void Import()
+        {
+
+        }
+
         #region Inner logic
+
+        bool ValidateFileByScheme()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 
         #endregion
 
         #region Checks
+
+        bool CanImport()
+        {
+            // проверка на наличие файла
+            if (!File.Exists(PlanFileName))
+            {
+                return false;
+            }
+
+            // проверка на соответствие формату плана ВО или СПО
+
+
+            return false;
+        }
 
         #endregion
 
