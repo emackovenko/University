@@ -11,8 +11,8 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(UniversityModel))]
-    [Migration("20180425101936_DataMigration25_04_2018__17_19_09_80")]
-    partial class DataMigration25_04_2018__17_19_09_80
+    [Migration("20180513073900_FirstMigrationTest")]
+    partial class FirstMigrationTest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -278,6 +278,8 @@ namespace Data.Migrations
 
                     b.Property<int?>("EducationFormId");
 
+                    b.Property<int?>("EducationLevelId");
+
                     b.Property<int?>("FacultyId");
 
                     b.Property<bool?>("IsAcceleratedLearning");
@@ -293,6 +295,8 @@ namespace Data.Migrations
                     b.HasIndex("DirectionId");
 
                     b.HasIndex("EducationFormId");
+
+                    b.HasIndex("EducationLevelId");
 
                     b.HasIndex("FacultyId");
 
@@ -792,6 +796,10 @@ namespace Data.Migrations
                         .WithMany()
                         .HasForeignKey("EducationFormId");
 
+                    b.HasOne("Data.University.EducationLevel", "EducationLevel")
+                        .WithMany()
+                        .HasForeignKey("EducationLevelId");
+
                     b.HasOne("Data.University.Faculty", "Faculty")
                         .WithMany()
                         .HasForeignKey("FacultyId");
@@ -838,7 +846,7 @@ namespace Data.Migrations
                         .HasForeignKey("InterfaceElementId");
 
                     b.HasOne("Data.University.Role", "Role")
-                        .WithMany()
+                        .WithMany("AvailableViews")
                         .HasForeignKey("RoleId");
                 });
 

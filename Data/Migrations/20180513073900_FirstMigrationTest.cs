@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class FirstMigrationTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,20 @@ namespace Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Citizenships", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Commands",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Commands", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,13 +216,25 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "InterfaceElements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InterfaceElements", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    ShortName = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -341,6 +367,84 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CommandPermissions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CommandId = table.Column<int>(nullable: true),
+                    RoleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommandPermissions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CommandPermissions_Commands_CommandId",
+                        column: x => x.CommandId,
+                        principalTable: "Commands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CommandPermissions_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InterfacePermissions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    InterfaceElementId = table.Column<int>(nullable: true),
+                    RoleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InterfacePermissions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InterfacePermissions_InterfaceElements_InterfaceElementId",
+                        column: x => x.InterfaceElementId,
+                        principalTable: "InterfaceElements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_InterfacePermissions_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Login = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    Patronimyc = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    RoleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Districts",
                 columns: table => new
                 {
@@ -397,6 +501,7 @@ namespace Data.Migrations
                     CathedraId = table.Column<int>(nullable: true),
                     DirectionId = table.Column<int>(nullable: true),
                     EducationFormId = table.Column<int>(nullable: true),
+                    EducationLevelId = table.Column<int>(nullable: true),
                     FacultyId = table.Column<int>(nullable: true),
                     IsAcceleratedLearning = table.Column<bool>(nullable: true),
                     Name = table.Column<string>(nullable: true),
@@ -421,6 +526,12 @@ namespace Data.Migrations
                         name: "FK_EducationPlans_EducationForms_EducationFormId",
                         column: x => x.EducationFormId,
                         principalTable: "EducationForms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EducationPlans_EducationLevels_EducationLevelId",
+                        column: x => x.EducationLevelId,
+                        principalTable: "EducationLevels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -722,6 +833,16 @@ namespace Data.Migrations
                 column: "TownId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CommandPermissions_CommandId",
+                table: "CommandPermissions",
+                column: "CommandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CommandPermissions_RoleId",
+                table: "CommandPermissions",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Directions_EducationLevelId",
                 table: "Directions",
                 column: "EducationLevelId");
@@ -772,6 +893,11 @@ namespace Data.Migrations
                 column: "EducationFormId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EducationPlans_EducationLevelId",
+                table: "EducationPlans",
+                column: "EducationLevelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EducationPlans_FacultyId",
                 table: "EducationPlans",
                 column: "FacultyId");
@@ -810,6 +936,16 @@ namespace Data.Migrations
                 name: "IX_IdentityDocuments_TypeId",
                 table: "IdentityDocuments",
                 column: "TypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InterfacePermissions_InterfaceElementId",
+                table: "InterfacePermissions",
+                column: "InterfaceElementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InterfacePermissions_RoleId",
+                table: "InterfacePermissions",
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Localities_DistrictId",
@@ -865,10 +1001,18 @@ namespace Data.Migrations
                 name: "IX_Towns_RegionId",
                 table: "Towns",
                 column: "RegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_RoleId",
+                table: "Users",
+                column: "RoleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CommandPermissions");
+
             migrationBuilder.DropTable(
                 name: "Disciplines");
 
@@ -876,13 +1020,19 @@ namespace Data.Migrations
                 name: "IdentityDocuments");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "InterfacePermissions");
 
             migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Commands");
 
             migrationBuilder.DropTable(
                 name: "DisciplineCycles");
@@ -900,6 +1050,9 @@ namespace Data.Migrations
                 name: "IdentityTypes");
 
             migrationBuilder.DropTable(
+                name: "InterfaceElements");
+
+            migrationBuilder.DropTable(
                 name: "FinanceSources");
 
             migrationBuilder.DropTable(
@@ -910,6 +1063,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Persons");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "EducationPlans");

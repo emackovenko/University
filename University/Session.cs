@@ -46,7 +46,8 @@ namespace University
         public static bool Initialize(string username, string password)
         {
             // Подключаем контекст БД
-            var data = new UniversityModel();
+            var data = new UniversityModel(true);
+            data.Database.EnsureCreated();
             var user = data.Users.Where(u => (u.Login == username) && (u.PasswordHash == password)).FirstOrDefault();
             if (user == null)
             {
@@ -56,7 +57,6 @@ namespace University
             {
                 _data = data;
                 CurrentUser = user;
-                //WorkOkAuth();
                 return true; 
             }
         }

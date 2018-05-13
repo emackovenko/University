@@ -277,6 +277,8 @@ namespace Data.Migrations
 
                     b.Property<int?>("EducationFormId");
 
+                    b.Property<int?>("EducationLevelId");
+
                     b.Property<int?>("FacultyId");
 
                     b.Property<bool?>("IsAcceleratedLearning");
@@ -292,6 +294,8 @@ namespace Data.Migrations
                     b.HasIndex("DirectionId");
 
                     b.HasIndex("EducationFormId");
+
+                    b.HasIndex("EducationLevelId");
 
                     b.HasIndex("FacultyId");
 
@@ -791,6 +795,10 @@ namespace Data.Migrations
                         .WithMany()
                         .HasForeignKey("EducationFormId");
 
+                    b.HasOne("Data.University.EducationLevel", "EducationLevel")
+                        .WithMany()
+                        .HasForeignKey("EducationLevelId");
+
                     b.HasOne("Data.University.Faculty", "Faculty")
                         .WithMany()
                         .HasForeignKey("FacultyId");
@@ -837,7 +845,7 @@ namespace Data.Migrations
                         .HasForeignKey("InterfaceElementId");
 
                     b.HasOne("Data.University.Role", "Role")
-                        .WithMany()
+                        .WithMany("AvailableViews")
                         .HasForeignKey("RoleId");
                 });
 

@@ -13,13 +13,20 @@ namespace Data.University
         public UniversityModel()
             : base()
         {
-            // todo Разрешить ситуацию с ленивой загрузкой данных
-            LoadEntities();
+        }
+
+        public UniversityModel(bool forcedLoading = false)
+        {
+            if (forcedLoading)
+            {
+                // todo Разрешить ситуацию с ленивой загрузкой данных
+                LoadEntities();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=192.168.0.48;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
+            optionsBuilder.UseMySql("server=localhost;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
         }
 
         
