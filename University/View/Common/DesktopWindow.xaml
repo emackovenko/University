@@ -24,13 +24,11 @@
                 <contingent:ContingentWorkspace/>
             </c:ExTabItem>
             <c:ExTabItem
-                vs:ProtectedView.Identity="Administration"
                 Title="Учебный отдел"
                 Icon="/ResourceLibrary;component/Images/planning.png">
                 <training:TrainingDivisionWorkspace/>
             </c:ExTabItem>
             <c:ExTabItem
-                vs:ProtectedView.Identity="Administration"
                 Title="Администрирование"
                 Icon="/ResourceLibrary;component/Images/hacker.png">
                 <admin:AdministrationWorkspace/>

@@ -16,6 +16,8 @@
             <RowDefinition
                 Height="Auto"/>
             <RowDefinition
+                Height="Auto"/>
+            <RowDefinition
                 Height="32"/>
             <RowDefinition
                 Height="Auto"/>
@@ -60,15 +62,15 @@
                 Margin="15 10"
                 Content="Добавлять новые объекты"
                 IsThreeState="False"
-                IsChecked="{Binding Path=SomePath, UpdateSourceTrigger=PropertyChanged}"/>
+                IsChecked="{Binding Path=AddingObectsPermission, UpdateSourceTrigger=PropertyChanged}"/>
             <CheckBox
                 Margin="15 10"
                 Content="Открыть редактор плана после импорта"
                 IsThreeState="False"
-                IsChecked="{Binding Path=SomePath, UpdateSourceTrigger=PropertyChanged}"/>
+                IsChecked="{Binding Path=OpenPlanEditorPermission, UpdateSourceTrigger=PropertyChanged}"/>
         </WrapPanel>
         <Grid
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.ColumnSpan="3">
             <Button
                 VerticalAlignment="Center"
@@ -78,7 +80,7 @@
                 Padding="20 3"/>
         </Grid>
         <GroupBox
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="3"
             Header="Вывод">
             <Grid>

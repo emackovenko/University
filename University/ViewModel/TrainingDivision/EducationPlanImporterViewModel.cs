@@ -10,6 +10,12 @@ namespace University.ViewModel.TrainingDivision
 {
     public class EducationPlanImporterViewModel: ViewModelBase
     {
+        public EducationPlanImporterViewModel()
+        {
+            AddingObectsPermission = true;
+            OpenPlanEditorPermission = true;
+        }
+
         #region View props
 
         public string PlanFileName { get; set; }
