@@ -9,6 +9,11 @@ namespace Data.University
     /// </summary>
     public class EducationPlan
     {
+        public EducationPlan()
+        {
+            Items = new List<EducationPlanItem>();
+        }
+
         /// <summary>
         /// Идентификатор
         /// </summary>
@@ -65,18 +70,23 @@ namespace Data.University
         public Direction Direction { get; set; }
 
         /// <summary>
-        /// Идентификатор уровня образования
+        /// Период обучения
         /// </summary>
-        public int? EducationLevelId { get; set; }
+        public string TrainingPeriod { get; set; }
 
         /// <summary>
-        /// Уровень образования
+        /// Идентификатор типа образовательной программы
         /// </summary>
-        public EducationLevel EducationLevel { get; set; }
+        public int? EducationProgramTypeId { get; set; }
 
         /// <summary>
-        /// Флаг - ускоренное обучение
+        /// Тип образовательной программы
         /// </summary>
-        public bool? IsAcceleratedLearning { get; set; }
+        public EducationProgramType EducationProgramType { get; set; }
+
+        /// <summary>
+        /// Элементы учебного плана
+        /// </summary>
+        public List<EducationPlanItem> Items { get; set; }
     }
 }

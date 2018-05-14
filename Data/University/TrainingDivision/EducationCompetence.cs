@@ -5,9 +5,9 @@ using System.Text;
 namespace Data.University
 {
     /// <summary>
-    /// Цикл учебных дисциплин
+    /// Образовательная компетенция
     /// </summary>
-    public class DisciplineCycle
+    public class EducationCompetence
     {
         /// <summary>
         /// Идентификатор
@@ -23,15 +23,5 @@ namespace Data.University
         /// Код
         /// </summary>
         public string Code { get; set; }
-
-        /// <summary>
-        /// Дисциплины цикла
-        /// </summary>
-        public List<Discipline> Disciplines { get; set; }
-
-        public DisciplineCycle()
-        {
-            Disciplines = new List<Discipline>();
-        }
     }
 }
