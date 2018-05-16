@@ -61,19 +61,16 @@ namespace ResourceLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
-        ///  &lt;xs:element name=&quot;Документ&quot;&gt;
-        ///    &lt;xs:complexType&gt;
-        ///      &lt;xs:sequence&gt;
-        ///        &lt;xs:element name=&quot;План&quot;&gt;
-        ///          &lt;xs:complexType&gt;
-        ///            &lt;xs:sequence&gt;
-        ///              &lt;xs:element name=&quot;Титул&quot;&gt;
-        ///                &lt;xs:complexType&gt;
-        ///                  &lt;xs:sequence&gt;
-        ///                    &lt;xs:element name=&quot;АтрибутыЦикловНов&quot;&gt;
-        ///                   [остаток строки не уместился]&quot;;.
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+        ///&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot; xmlns:jaxb=&quot;http://java.sun.com/xml/ns/jaxb&quot; jaxb:version=&quot;2.0&quot;&gt;
+        ///  &lt;!--===============================================--&gt;
+        ///  &lt;!--Базовый тип для узла без потомков и аттрибутов --&gt;
+        ///  &lt;xsd:complexType name=&quot;Пробка&quot;&gt;
+        ///        &lt;xsd:sequence  minOccurs=&quot;0&quot;&gt;
+        ///        &lt;xsd:element name=&quot;ДырОтБуб&quot;/&gt;
+        ///      &lt;/xsd:sequence&gt;
+        ///  &lt;/xsd:complexType&gt;  
+        ///  &lt;!-- Для создания универсальной схемы  [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string EducationPlanCustomScheme {
             get {

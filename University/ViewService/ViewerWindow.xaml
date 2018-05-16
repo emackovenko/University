@@ -9,8 +9,10 @@
         WindowStyle="ToolWindow" 
         ResizeMode="NoResize" 
         SizeToContent="WidthAndHeight" 
-        WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFFFFCF">
     <Grid
+        Margin="5"
         Background="#FFFFFFCF">
         <Grid.RowDefinitions>
             <RowDefinition/>

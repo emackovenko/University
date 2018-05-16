@@ -5,18 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.IO;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Linq;
+using ResourceLibrary.Properties;
+using Data.University;
+using System.Collections.ObjectModel;
 
 namespace University.ViewModel.TrainingDivision
 {
     public class EducationPlanImporterViewModel: ViewModelBase
     {
+
         public EducationPlanImporterViewModel()
         {
             AddingObectsPermission = true;
             OpenPlanEditorPermission = true;
+            Plan = new EducationPlan();
         }
 
         #region View props
+
+        public EducationPlan Plan { get; set; }
 
         public string PlanFileName { get; set; }
 
@@ -41,6 +51,39 @@ namespace University.ViewModel.TrainingDivision
                 _logText.AppendLine(value);
             }
         }
+
+        #region Collections
+
+        public ObservableCollection<Faculty> Faculties
+        {
+            get => new ObservableCollection<Faculty>(Session.Data.Faculties.ToList());
+        }
+
+        public ObservableCollection<Direction> Directions
+        {
+            get => new ObservableCollection<Direction>(Session.Data.Directions.ToList());
+        }
+
+        public ObservableCollection<Cathedra> Cathedras
+        {
+            get => new ObservableCollection<Cathedra>(Session.Data.Cathedras.ToList());
+        }
+
+        public ObservableCollection<EducationForm> EducationForms
+        {
+            get => new ObservableCollection<EducationForm>(Session.Data.EducationForms.ToList());
+        }
+
+        public ObservableCollection<EducationProgramType> EducationProgramTypes
+        {
+            get => new ObservableCollection<EducationProgramType>(Session.Data.EducationProgramTypes.ToList());
+        }
+
+
+
+
+
+        #endregion
 
         #endregion
 
@@ -73,7 +116,30 @@ namespace University.ViewModel.TrainingDivision
 
         void Import()
         {
+            _logText.Clear();
+            if (!CanImport())
+            {
+                return;
+            }
 
+            // загрузить файл
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(PlanFileName);
+
+            // шарим узел Документ
+            var docNode = xmlDoc.SelectSingleNode("Документ");
+            var planNode = docNode.SelectSingleNode("План");
+            var titleNode = planNode.SelectSingleNode("Титул");
+
+            // Если имя еще пустое, взять его из документа
+            if (string.IsNullOrWhiteSpace(Plan.Name))
+            {
+                Plan.Name = titleNode.Attributes["ИмяПлана"].Value;
+            }
+
+
+
+            RaisePropertyChanged("Plan");
         }
 
         #region Inner logic
@@ -94,13 +160,25 @@ namespace University.ViewModel.TrainingDivision
             // проверка на наличие файла
             if (!File.Exists(PlanFileName))
             {
+                Log = "Файл не существует или защищен от чтения.";
                 return false;
             }
 
             // проверка на соответствие формату плана ВО или СПО
-
-
-            return false;
+            try
+            {
+                var xmlDoc = XDocument.Load(PlanFileName);
+                var xmlSchema = new XmlSchemaSet();
+                xmlSchema.Add(null, Extractor.ExtractSchema(Resources.EducationPlanCustomScheme));
+                xmlDoc.Validate(xmlSchema, null);
+                Log = "Файл соответствует схеме.";
+                return true;
+            }
+            catch (Exception)
+            {
+                Log = "Файл не соотвествует схеме.";
+                return false;
+            }
         }
 
         #endregion
