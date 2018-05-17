@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Data.University
@@ -70,9 +71,14 @@ namespace Data.University
         public Direction Direction { get; set; }
 
         /// <summary>
-        /// Период обучения
+        /// Дата начала обучения
         /// </summary>
-        public string TrainingPeriod { get; set; }
+        public DateTime? BeginDate { get; set; }
+
+        /// <summary>
+        /// Дата окончания обучения
+        /// </summary>
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Идентификатор типа образовательной программы
@@ -88,5 +94,6 @@ namespace Data.University
         /// Элементы учебного плана
         /// </summary>
         public List<EducationPlanItem> Items { get; set; }
+        
     }
 }

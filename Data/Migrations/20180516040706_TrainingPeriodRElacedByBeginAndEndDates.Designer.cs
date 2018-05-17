@@ -11,9 +11,10 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(UniversityModel))]
-    partial class UniversityModelModelSnapshot : ModelSnapshot
+    [Migration("20180516040706_TrainingPeriodRElacedByBeginAndEndDates")]
+    partial class TrainingPeriodRElacedByBeginAndEndDates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

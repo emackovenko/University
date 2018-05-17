@@ -168,19 +168,32 @@
                     SelectedItem="{Binding Path=Plan.Direction, UpdateSourceTrigger=PropertyChanged}"
                     ItemsSource="{Binding Path=Directions}"
                     DisplayMemberPath="DisplayName"/>
+                
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="0"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Text="Срок обучения"/>
-                <TextBox
+                    Text="Срок обучения:"/>
+                <StackPanel
                     Grid.Row="1"
                     Grid.Column="2"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Width="100"
-                    Text="{Binding Path=Plan.TrainingPeriod, UpdateSourceTrigger=PropertyChanged}"/>
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Text="c "/>
+                    <DatePicker
+                        VerticalAlignment="Center"
+                        Margin="3 0"
+                        SelectedDate="{Binding Path=Plan.BeginDate, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Text=" по "/>
+                    <DatePicker
+                        VerticalAlignment="Center"
+                        Margin="3 0"
+                        SelectedDate="{Binding Path=Plan.EndDate, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"

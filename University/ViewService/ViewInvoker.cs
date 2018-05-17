@@ -15,5 +15,11 @@ namespace University.ViewService
             viewer.controlArea.Visibility = System.Windows.Visibility.Collapsed;
             return viewer.ShowDialog() ?? false;
         }
+
+        public static bool ShowEditorWindow(ViewModelBase dataContext)
+        {
+            var viewer = new ViewerWindow(dataContext);
+            return viewer.ShowDialog() ?? false;
+        }
     }
 }
