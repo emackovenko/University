@@ -57,6 +57,10 @@ namespace University
             {
                 _data = data;
                 CurrentUser = user;
+                if (user.Role.IsWorkOkAccessRequired ?? false)
+                {
+                    WorkOkAuth();
+                }
                 return true; 
             }
         }

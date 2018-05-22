@@ -1,0 +1,60 @@
+﻿<Page x:Class="University.View.Payline.Pages.ActiveStudents"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University.View.Payline.Pages"
+      xmlns:vm="clr-namespace:University.ViewModel.Payline"
+      xmlns:controls="clr-namespace:WpfExtensions.Controls;assembly=WpfExtensions"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ActiveStudents">
+    <Page.DataContext>
+        <vm:ActiveStudentsViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="32"/>
+            <RowDefinition
+                Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Orientation="Horizontal">
+            <Button
+                Style="{StaticResource ToolButton}">
+                <Image
+                    Style="{StaticResource PictureEdit}"/>
+            </Button>
+        </StackPanel>
+        <controls:ExtDataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding Path=Students}"
+            SelectedItem="{Binding Path=SelectedStudent}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Ф.И.О."
+                    Binding="{Binding Path=FullName}"/>
+                <DataGridTextColumn
+                    Header="Курс"
+                    Binding="{Binding Path=Course}"/>
+                <DataGridTextColumn
+                    Header="Курс"
+                    Binding="{Binding Path=Faculty.Name}"/>
+                <DataGridTextColumn
+                    Header="Группа"
+                    Binding="{Binding Path=Group.Name}"/>
+                <DataGridTextColumn
+                    Header="Баланс"
+                    Binding="{Binding Path=Balance}"/>
+                <DataGridTextColumn
+                    Header="Отсрочка до"
+                    Binding="{Binding Path=Delay}"/>
+                <DataGridTextColumn
+                    Header="Период оплаты"
+                    Binding="{Binding Path=PaymentPeriod.Name}"/>
+            </DataGrid.Columns>
+        </controls:ExtDataGrid>
+    </Grid>
+</Page>

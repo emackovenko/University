@@ -167,6 +167,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\Administration\UserListViewModel.cs" />
     <Compile Include="ViewModel\Contingent\ActiveStudentsViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ActiveStudentsViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanImporterViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanListViewModel.cs" />
     <Compile Include="ViewService\ViewerWindow.xaml.cs">
@@ -198,6 +199,15 @@
     </Compile>
     <Compile Include="View\Contingent\Pages\ActiveStudents.xaml.cs">
       <DependentUpon>ActiveStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\PaylineWorkspace.xaml.cs">
+      <DependentUpon>PaylineWorkspace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\Pages\ActiveStudents.xaml.cs">
+      <DependentUpon>ActiveStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\StudentView.xaml.cs">
+      <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TrainingDivision\EducationPlanImporterView.xaml.cs">
       <DependentUpon>EducationPlanImporterView.xaml</DependentUpon>
@@ -249,6 +259,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Contingent\Pages\ActiveStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\PaylineWorkspace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\Pages\ActiveStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\StudentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,9 +331,7 @@
   <ItemGroup>
     <Resource Include="University.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Payline\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\KindOfMagic.1.3.1\build\KindOfMagic.targets" Condition="Exists('..\packages\KindOfMagic.1.3.1\build\KindOfMagic.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
