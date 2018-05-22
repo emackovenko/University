@@ -24,6 +24,16 @@ namespace Data.University
             }
         }
 
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            foreach (var relationship in modelbuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.SetNull;
+            }
+
+            base.OnModelCreating(modelbuilder);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
