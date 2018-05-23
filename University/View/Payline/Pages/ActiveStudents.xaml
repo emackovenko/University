@@ -23,6 +23,7 @@
             Grid.Row="0"
             Orientation="Horizontal">
             <Button
+                Command="{Binding Path=OpenStudentViewCommand}"
                 Style="{StaticResource ToolButton}">
                 <Image
                     Style="{StaticResource PictureEdit}"/>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.WorkOk;
+using University.ViewService;
 
 namespace University.ViewModel.Payline
 {
@@ -28,6 +29,21 @@ namespace University.ViewModel.Payline
 
         public Student SelectedStudent { get; set; }
 
+        public RelayCommand OpenStudentViewCommand
+        {
+            get => new RelayCommand(OpenStudentView);
+        }
+
+        void OpenStudentView()
+        {
+            var vm = new StudentViewModel(SelectedStudent);
+            if (ViewInvoker.ShowEditorWindow(vm))
+            {
+                SelectedStudent.Save();
+                SelectedStudent.Info.Save();
+                RaisePropertyChanged("SelectedStudent");
+            }
+        }
 
     }
 }

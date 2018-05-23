@@ -168,6 +168,7 @@
     <Compile Include="ViewModel\Administration\UserListViewModel.cs" />
     <Compile Include="ViewModel\Contingent\ActiveStudentsViewModel.cs" />
     <Compile Include="ViewModel\Payline\ActiveStudentsViewModel.cs" />
+    <Compile Include="ViewModel\Payline\StudentViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanImporterViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanListViewModel.cs" />
     <Compile Include="ViewService\ViewerWindow.xaml.cs">
@@ -316,7 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{ee878fc1-6d7b-425f-8b76-2c4a31b6ac82}</Project>
+      <Project>{48adcd34-9031-4605-9df8-ec6c04cf801d}</Project>
       <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\ResourceLibrary\ResourceLibrary.csproj">

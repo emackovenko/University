@@ -78,6 +78,35 @@ namespace Data.WorkOk
         [DbFieldInfo("spstatus")]
         public int? FinanceSourceId { get; set; }
 
+        [DbFieldInfo("sex")]
+        private string Sex { get; set; }
+
+        public string Gender
+        {
+            get
+            {
+                if (Sex == "1")
+                {
+                    return "мужской";
+                }
+                else
+                {
+                    return "женский";
+                }
+            }
+            set
+            {
+                if (value == "мужской")
+                {
+                    Sex = "1";
+                }
+                else
+                {
+                    Sex = "0";
+                }
+            }
+        }
+
         public FinanceSource FinanceSource
         {
             get => Context.FinanceSources.FirstOrDefault(e => e.Id == FinanceSourceId);
@@ -91,6 +120,14 @@ namespace Data.WorkOk
         public StudentInfo Info
         {
             get => Context.StudentInfoSets.FirstOrDefault(si => si.StudentId == Id);
+            set
+            {
+                var info = Context.StudentInfoSets.FirstOrDefault(si => si.StudentId == Id);
+                if (info != null)
+                {
+                    info = value;
+                }
+            }
         }
 
         public IEnumerable<StudentContract> Contracts
