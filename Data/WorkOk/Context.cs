@@ -30,6 +30,13 @@ namespace Data.WorkOk
             OrderTypes = new EntitySet<OrderType>();
             IdentityDocumentTypes = new EntitySet<IdentityDocumentType>();
             Citizenships = new EntitySet<Citizenship>();
+            StudentInfoSets = new EntitySet<StudentInfo>();
+            StudentContracts = new EntitySet<StudentContract>();
+            PaymentPeriodTypes = new EntitySet<PaymentPeriodType>();
+            PersonContragents = new EntitySet<PersonContragent>("WHERE tip = 1");
+            OrganizationContragents = new EntitySet<OrganizationContragent>("WHERE tip = 2");
+            PaymentBalances = new EntitySet<PaymentBalance>();
+            PaymentDelays = new EntitySet<PaymentDelay>();
         }
 
         #region Entity collections
@@ -45,6 +52,13 @@ namespace Data.WorkOk
         public static EntitySet<EducationForm> EducationForms { get; set; }
         public static EntitySet<IdentityDocumentType> IdentityDocumentTypes { get; set; }
         public static EntitySet<Citizenship> Citizenships { get; set; }
+        public static EntitySet<StudentInfo> StudentInfoSets { get; set; }
+        public static EntitySet<StudentContract> StudentContracts { get; set; }
+        public static EntitySet<PaymentPeriodType> PaymentPeriodTypes { get; set; }
+        public static EntitySet<PersonContragent> PersonContragents { get; set; }
+        public static EntitySet<OrganizationContragent> OrganizationContragents { get; set; }
+        public static EntitySet<PaymentBalance> PaymentBalances { get; set; }
+        public static EntitySet<PaymentDelay> PaymentDelays { get; set; }
 
         #endregion
 

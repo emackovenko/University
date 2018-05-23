@@ -87,38 +87,53 @@ namespace Data.WorkOk
         public IEnumerable<Order> Orders { get => Context.Orders.Where(o => o.StudentId == Id); }
 
         public string FullName { get => string.Format("{0} {1} {2}", LastName, FirstName, Patronimyc); }
-
-        [DbFieldInfo("IdentityDocumentSeries")]
-        public string IdentityDocumentSeries { get; set; }
-
-        [DbFieldInfo("IdentityDocumentNumber")]
-        public string IdentityDocumentNumber { get; set; }
-
-        [DbFieldInfo("IdentityDocumentDate", DbFieldType.DateTime)]
-        public DateTime? IdentityDocumentDate { get; set; }
-
-        [DbFieldInfo("IdentityDocumentOrganization")]
-        public string IdentityDocumentOrganization { get; set; }
-
-        [DbFieldInfo("IdentityDocumentTypeId", DbFieldType.Integer)]
-        public int? IdentityDocumentTypeId { get; set; }
-
-        [DbFieldInfo("CitizenshipId", DbFieldType.Integer)]
-        public int? CitizenshipId { get; set; }
-
-        public IdentityDocumentType IdentityDocumentType
+        
+        public StudentInfo Info
         {
-            get => Context.IdentityDocumentTypes.FirstOrDefault(e => e.Id == IdentityDocumentTypeId);
-            set => IdentityDocumentTypeId = value?.Id;
+            get => Context.StudentInfoSets.FirstOrDefault(si => si.StudentId == Id);
         }
 
-        public Citizenship Citizenship
+        public IEnumerable<StudentContract> Contracts
         {
-            get => Context.Citizenships.FirstOrDefault(e => e.Id == CitizenshipId);
-            set => CitizenshipId = value?.Id;
+            get => Context.StudentContracts.Where(sc => sc.StudentId == Id);
         }
 
-        [DbFieldInfo("BirthDate", DbFieldType.DateTime)]
-        public DateTime? BirthDate { get; set; }
+        public PaymentPeriodType PaymentPeriodType
+        {
+            get
+            {
+                return Contracts.FirstOrDefault()?.PaymentPeriodType;        
+            }
+        }
+
+        public PaymentDelay PaymentDelay
+        {
+            get
+            {
+                return Context.PaymentDelays.FirstOrDefault(pd => pd.StudentId == Id);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    value.StudentId = Id;
+                }
+            }
+        }
+
+        public PaymentBalance Balance
+        {
+            get
+            {
+                return Context.PaymentBalances.FirstOrDefault(pb => pb.StudentId == Id);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    value.StudentId = Id;
+                }
+            }
+        }
     }
 }

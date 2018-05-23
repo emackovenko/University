@@ -40,20 +40,20 @@
                     Header="Курс"
                     Binding="{Binding Path=Course}"/>
                 <DataGridTextColumn
-                    Header="Курс"
-                    Binding="{Binding Path=Faculty.Name}"/>
+                    Header="Факультет"
+                    Binding="{Binding Path=Faculty.ShortName}"/>
                 <DataGridTextColumn
                     Header="Группа"
                     Binding="{Binding Path=Group.Name}"/>
                 <DataGridTextColumn
                     Header="Баланс"
-                    Binding="{Binding Path=Balance}"/>
+                    Binding="{Binding Path=Balance.Sum}"/>
                 <DataGridTextColumn
                     Header="Отсрочка до"
-                    Binding="{Binding Path=Delay}"/>
+                    Binding="{Binding Path=PaymentDelay}"/>
                 <DataGridTextColumn
                     Header="Период оплаты"
-                    Binding="{Binding Path=PaymentPeriod.Name}"/>
+                    Binding="{Binding Path=PaymentPeriodType.Name}"/>
             </DataGrid.Columns>
         </controls:ExtDataGrid>
     </Grid>

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Data.WorkOk
 {
-    [TableName("spfak")]
-    public class Faculty: Entity
+    [TableName("platn.period")]
+    public class PaymentPeriodType: Entity
     {
         [PrimaryKey]
         [DbFieldInfo("pin", DbFieldType.Integer)]
@@ -15,10 +16,5 @@ namespace Data.WorkOk
         [DbFieldInfo("name")]
         public string Name { get; set; }
 
-        [DbFieldInfo("mean")]
-        public string ShortName { get; set; }
-
-        [DbFieldInfo("codbar")]
-        public string AstuId { get; set; }
     }
 }

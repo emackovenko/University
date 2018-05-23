@@ -21,6 +21,7 @@ namespace University.ViewModel.Payline
             {
                 return new ObservableCollection<Student>(Context.Students
                     .Where(s => s.StatusId == 1)
+                    .Where(s => s.FinanceSourceId == 2)
                     .OrderBy(s => s.FullName));
             }
         }
