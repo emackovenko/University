@@ -8,7 +8,11 @@
              xmlns:vm="clr-namespace:University.ViewModel.Payline"
              mc:Ignorable="d"
              Height="Auto"
+             MinHeight="330"
              Width="800">
+    <!--<UserControl.DataContext>
+        <vm:StudentViewModel/>
+    </UserControl.DataContext>-->
     <Grid>
         <TabControl>
             <TabItem
@@ -197,7 +201,7 @@
                                 Grid.Column="2"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
-                                Text="{Binding Path=Student.Info.IdentityDocumentDate, UpdateSourceTrigger=PropertyChanged}"/>
+                                SelectedDate="{Binding Path=Student.Info.IdentityDocumentDate, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock
                                 Grid.Row="2"
                                 Grid.Column="0"
@@ -235,6 +239,178 @@
                                 DisplayMemberPath="Name"/>
                         </Grid>
                     </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="Договоры">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*"/>
+                        <ColumnDefinition
+                            Width="3"/>
+                        <ColumnDefinition
+                            Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox
+                        Grid.Column="0"
+                        Header="Договоры">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel
+                                Grid.Row="0"
+                                Orientation="Horizontal">
+                                <Button
+                                    ToolTip="Добавить"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PictureAdd}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Редактировать"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PictureEdit}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Удалить"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PictureDelete}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Печать"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PicturePrint}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Расторжение"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Source="/ResourceLibrary;component/Images/Buttons/document_stop.png"/>
+                                </Button>
+                            </StackPanel>
+                            <ListBox
+                                x:Name="contractList"
+                                Grid.Row="1"
+                                ItemsSource="{Binding Path=Student.Contracts}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                SelectedItem="{Binding Path=SelectedContract}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.Style>
+                                                <Style
+                                                    TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding Path=IsActive}"
+                                                            Value="True">
+                                                            <Setter
+                                                                Property="Background"
+                                                                Value="#FFAFFF9E"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding Path=IsActive}"
+                                                            Value="False">
+                                                            <Setter
+                                                                Property="Background"
+                                                                Value="#FFCCCDCB"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
+                                            <StackPanel
+                                                Orientation="Vertical">
+                                                <TextBlock
+                                                    FontWeight="Bold"
+                                                    Text="{Binding Path=Number, StringFormat=№{0}}"/>
+                                                <TextBlock
+                                                    FontWeight="Bold"
+                                                    Text="{Binding Path=Date, Converter={StaticResource DateConverter}, StringFormat=от {0} г.}"/>
+                                                <WrapPanel                                                
+                                                    MaxWidth="{Binding ElementName=contractList, Path=ActualWidth}" Orientation="Vertical">
+                                                    <TextBlock
+                                                        FontSize="10"
+                                                        TextWrapping="Wrap"
+                                                        Text="{Binding Path=Contragent.Name, StringFormat=Плательщик: {0}}"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </GroupBox>
+                    <Grid
+                        Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="*"/>
+                        </Grid.RowDefinitions>
+                        <GroupBox
+                            Grid.Row="0"
+                            Header="Дополнительные соглашения">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="32"/>
+                                    <RowDefinition
+                                        Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        ToolTip="Добавить"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PictureAdd}"/>
+                                    </Button>
+                                    <Button
+                                        ToolTip="Редактировать"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PictureEdit}"/>
+                                    </Button>
+                                    <Button
+                                        ToolTip="Удалить"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PictureDelete}"/>
+                                    </Button>
+                                    <Button
+                                        ToolTip="Печать"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PicturePrint}"/>
+                                    </Button>
+                                </StackPanel>
+                                <ListView
+                                    Grid.Row="1"
+                                    ItemsSource="{Binding Path=Agreements}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn
+                                                Header="Номер"
+                                                DisplayMemberBinding="{Binding Path=Number}"/>
+                                            <GridViewColumn
+                                                Header="Дата"
+                                                DisplayMemberBinding="{Binding Path=Date, Converter={StaticResource DateConverter}}"/>
+                                            <GridViewColumn
+                                                Header="Тип"
+                                                DisplayMemberBinding="{Binding Path=AgreementType.Name}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

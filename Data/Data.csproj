@@ -258,6 +258,8 @@
     <Compile Include="University\TrainingDivision\EducationPlanGraphic.cs" />
     <Compile Include="University\TrainingDivision\EducationPlanItem.cs" />
     <Compile Include="University\UniversityModel.cs" />
+    <Compile Include="WorkOk\AgreementType.cs" />
+    <Compile Include="WorkOk\AuxAgreement.cs" />
     <Compile Include="WorkOk\Backend\Cache.cs" />
     <Compile Include="WorkOk\Backend\DbFieldInfoAttribute.cs" />
     <Compile Include="WorkOk\Backend\Entity.cs" />
@@ -272,10 +274,16 @@
     <Compile Include="WorkOk\Backend\TableNameAttribute.cs" />
     <Compile Include="WorkOk\Citizenship.cs" />
     <Compile Include="WorkOk\Context.cs" />
+    <Compile Include="WorkOk\ContractPeriodChangingAgreement.cs" />
+    <Compile Include="WorkOk\ContractPriceAndPeriodChangingAgreement.cs" />
+    <Compile Include="WorkOk\ContractTerminationAgreement.cs" />
+    <Compile Include="WorkOk\ContractTerminationWithObligationAgreement.cs" />
     <Compile Include="WorkOk\Contragent.cs" />
+    <Compile Include="WorkOk\ContragentChangingAgreement.cs" />
     <Compile Include="WorkOk\Direction.cs" />
     <Compile Include="WorkOk\EducationForm.cs" />
     <Compile Include="WorkOk\Faculty.cs" />
+    <Compile Include="WorkOk\FastTrainingAgreement.cs" />
     <Compile Include="WorkOk\FinanceSource.cs" />
     <Compile Include="WorkOk\Group.cs" />
     <Compile Include="WorkOk\IdentityDocumentType.cs" />
@@ -286,10 +294,13 @@
     <Compile Include="WorkOk\PaymentDelay.cs" />
     <Compile Include="WorkOk\PaymentPeriodType.cs" />
     <Compile Include="WorkOk\PersonContragent.cs" />
+    <Compile Include="WorkOk\PriceChangingAgreement.cs" />
     <Compile Include="WorkOk\Status.cs" />
     <Compile Include="WorkOk\Student.cs" />
     <Compile Include="WorkOk\StudentContract.cs" />
     <Compile Include="WorkOk\StudentInfo.cs" />
+    <Compile Include="WorkOk\StudentNameChangingAgreement.cs" />
+    <Compile Include="WorkOk\StudentNameChangingOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataUpgrade.bat" />

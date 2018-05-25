@@ -24,9 +24,16 @@
             Orientation="Horizontal">
             <Button
                 Command="{Binding Path=OpenStudentViewCommand}"
+                ToolTip="Редактировать студента"
                 Style="{StaticResource ToolButton}">
                 <Image
                     Style="{StaticResource PictureEdit}"/>
+            </Button>
+            <Button
+                ToolTip="Договоры студента"
+                Style="{StaticResource ToolButton}">
+                <Image
+                    Source="/ResourceLibrary;component/Images/Buttons/form_blue.png"/>
             </Button>
         </StackPanel>
         <controls:ExtDataGrid
