@@ -13,7 +13,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using Processing.Document;
-using GalaSoft.MvvmLight.Command;
 
 namespace WpfExtensions.Controls
 {
@@ -25,9 +24,6 @@ namespace WpfExtensions.Controls
         public OpenXmlDocumentViewer()
         {
             InitializeComponent();
-
-            btnWord.Command = OpenInWordCommand;
-            btnExcel.Command = OpenInExcelCommand;
         }
 
         static OpenXmlDocumentViewer()
@@ -60,51 +56,46 @@ namespace WpfExtensions.Controls
             }
         }
 
-        public RelayCommand OpenInWordCommand
-        {
-            get
-            {
-                return new RelayCommand(OpenInOutsourceEditor, OpenInWordCanExecute);
-            }
-        }
-
-        public RelayCommand OpenInExcelCommand
-        {
-            get
-            {
-                return new RelayCommand(OpenInOutsourceEditor, OpenInExcelCanExecute);
-            }
-        }
-
-        void OpenInOutsourceEditor()
+        public void OpenInOutsourceEditor()
         {
             Process.Start(Document.OriginalFileName);
         }
 
-        bool OpenInWordCanExecute()
+        bool OpenInWordCanExecute
         {
-            bool result = false;
-            if (Document != null)
+            get
             {
-                if (Document.DocumentType == OpenXmlDocumentType.Document)
+                bool result = false;
+                if (Document != null)
                 {
-                    result = true;
+                    if (Document.DocumentType == OpenXmlDocumentType.Document)
+                    {
+                        result = true;
+                    }
                 }
+                return result;
             }
-            return result;
         }
 
-        bool OpenInExcelCanExecute()
+        bool OpenInExcelCanExecute
         {
-            bool result = false;
-            if (Document != null)
+            get
             {
-                if (Document.DocumentType == OpenXmlDocumentType.Spreadsheet)
+                bool result = false;
+                if (Document != null)
                 {
-                    result = true;
+                    if (Document.DocumentType == OpenXmlDocumentType.Spreadsheet)
+                    {
+                        result = true;
+                    }
                 }
+                return result;
             }
-            return result;
+        }
+
+        private void btnWord_Click(object sender, RoutedEventArgs e)
+        {
+            OpenInOutsourceEditor();
         }
     }
 }

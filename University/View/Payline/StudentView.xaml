@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:University.View.Payline"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:vm="clr-namespace:University.ViewModel.Payline"
+             xmlns:xcad="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
              Height="Auto"
              MinHeight="330"
@@ -285,6 +286,7 @@
                                 </Button>
                                 <Button
                                     ToolTip="Печать"
+                                    Command="{Binding Path=PrintContractCommand}"
                                     Style="{StaticResource ToolButton}">
                                     <Image
                                         Style="{StaticResource PicturePrint}"/>
@@ -366,12 +368,43 @@
                                 <StackPanel
                                     Grid.Row="0"
                                     Orientation="Horizontal">
-                                    <Button
-                                        ToolTip="Добавить"
-                                        Style="{StaticResource ToolButton}">
+                                    <xcad:DropDownButton
+                                        BorderBrush="{StaticResource ToolButtonBorderGradient}"
+                                        Background="{x:Null}"
+                                        BorderThickness="1"
+                                        Height="32">
                                         <Image
                                             Style="{StaticResource PictureAdd}"/>
-                                    </Button>
+                                        <xcad:DropDownButton.DropDownContent>
+                                            <StackPanel
+                                                Orientation="Vertical">
+                                                <MenuItem
+                                                    Header="Смена фамилии"
+                                                    Command="{Binding Path=AddStudentNameChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение стоимости"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Расторжение договора"
+                                                    Command="{Binding Path=AddContractTerminationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Расторжение договора с обязательством"
+                                                    Command="{Binding Path=AddContractTerminationWithObligationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение срока договора+"
+                                                    Command="{Binding Path=AddContractTerminationWithObligationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение стоимости и срока договора+"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Смена плательщика"
+                                                    Command="{Binding Path=AddContragentChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Перевод на ускоренное обучение+"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                            </StackPanel>
+                                        </xcad:DropDownButton.DropDownContent>
+                                    </xcad:DropDownButton>
                                     <Button
                                         ToolTip="Редактировать"
                                         Style="{StaticResource ToolButton}">

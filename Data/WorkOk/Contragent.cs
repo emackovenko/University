@@ -21,7 +21,7 @@ namespace Data.WorkOk
         public string Address { get; set; }
 
         [DbFieldInfo("tip", DbFieldType.Integer)]
-        protected int? ContragentType { get; set; }
+        public int? ContragentType { get; set; }
 
         public string ContragentTypeName
         {

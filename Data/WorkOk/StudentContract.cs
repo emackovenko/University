@@ -61,6 +61,7 @@ namespace Data.WorkOk
                 {
                     IsArchive = 1;
                 }
+                Raise();
             }
         }
 
@@ -145,6 +146,7 @@ namespace Data.WorkOk
                 {
                     ContragentId = value?.Id;
                 }
+                Raise();
             }
         }
 

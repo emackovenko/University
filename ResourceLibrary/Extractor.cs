@@ -24,5 +24,21 @@ namespace ResourceLibrary.Properties
 
             return fileName;
         }
+
+        public static string ExtractDocument(byte[] resource)
+        {
+            string fileName = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData)
+            + "\\University\\Templates\\Document" + " - " + DateTime.Now.ToString("dd.MM.yyyy hh-mm-ss") + ".dotx";
+
+            if (!Directory.Exists(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\University\\Templates\\Document"))
+            {
+                Directory.CreateDirectory(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData)
+            + "\\University\\Template\\Document");
+            }
+
+            File.WriteAllBytes(fileName, resource);
+
+            return fileName;
+        }
     }
 }

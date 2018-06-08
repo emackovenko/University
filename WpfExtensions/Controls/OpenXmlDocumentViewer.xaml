@@ -27,22 +27,26 @@
 				<Button
 					x:Name="btnWord"
 					BorderBrush="{x:Null}"
-					Style="{StaticResource ToolButton}"
+                    Background="{x:Null}"
 					Margin="2"
 					ToolTip="Открыть в Microsoft Word"
 					Height="48"
-					Width="48">
+					Width="48"
+                    IsEnabled="{Binding Path=OpenInWordCanExecute}"
+                    Click="btnWord_Click">
 					<Image
 						Source="/ResourceLibrary;component/Images/Buttons/word.png" />
 				</Button>
 				<Button
 					x:Name="btnExcel"
 					BorderBrush="{x:Null}"
-					Style="{StaticResource ToolButton}"
+                    Background="{x:Null}"
 					Margin="2"
 					ToolTip="Открыть в Microsoft Excel"
 					Height="48"
-					Width="48">
+					Width="48"
+                    IsEnabled="{Binding Path=OpenInExcelCanExecute}"
+                    Click="btnWord_Click">
 					<Image
 						Source="/ResourceLibrary;component/Images/Buttons/excel.png" />
 				</Button>

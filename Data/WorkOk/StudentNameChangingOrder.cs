@@ -39,9 +39,7 @@ namespace Data.WorkOk
 
         [DbFieldInfo("vname")]
         public string OldPatronimyc { get; set; }
-
-
-
+       
         [DbFieldInfo("pasnum", DbFieldType.String)]
         public string OldIdentityDocumentProps { get; set; }
 
@@ -50,6 +48,11 @@ namespace Data.WorkOk
 
         [DbFieldInfo("pasdate", DbFieldType.DateTime)]
         public DateTime? OldIdentityDocumentDate { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("№{0} от {1} г.", Number, Date.ToString("dd.MM.yyyy"));
+        }
 
     }
 }

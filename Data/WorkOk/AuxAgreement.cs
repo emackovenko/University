@@ -9,6 +9,11 @@ namespace Data.WorkOk
     [TableName("platn.dopsogl")]
     public abstract class AuxAgreement: Entity
     {
+        public AuxAgreement()
+        {
+            Date = DateTime.Now;
+        }
+
         [PrimaryKey]
         [DbFieldInfo("pin", DbFieldType.Integer)]
         public int Id { get; set; }

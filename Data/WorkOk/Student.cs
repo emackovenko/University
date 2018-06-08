@@ -104,6 +104,7 @@ namespace Data.WorkOk
                 {
                     Sex = "0";
                 }
+                Raise();
             }
         }
 
@@ -122,11 +123,11 @@ namespace Data.WorkOk
             get => Context.StudentInfoSets.FirstOrDefault(si => si.StudentId == Id);
             set
             {
-                var info = Context.StudentInfoSets.FirstOrDefault(si => si.StudentId == Id);
-                if (info != null)
+                if (value != null)
                 {
-                    info = value;
+                    value.StudentId = Id;
                 }
+                Raise();
             }
         }
 
@@ -154,6 +155,7 @@ namespace Data.WorkOk
                 if (value != null)
                 {
                     value.StudentId = Id;
+                    Raise();
                 }
             }
         }
@@ -169,6 +171,7 @@ namespace Data.WorkOk
                 if (value != null)
                 {
                     value.StudentId = Id;
+                    Raise();
                 }
             }
         }

@@ -59,6 +59,108 @@ namespace University.ViewModel.Payline
 
         #endregion
 
+        public RelayCommand AddStudentNameChangingAgreementCommand { get => new RelayCommand(AddStudentNameChangingAgreement); }
+        
+        void AddStudentNameChangingAgreement()
+        {
+            var agreement = new StudentNameChangingAgreement
+            {
+                ContractId = SelectedContract.Id
+            };
+            var vm = new StudentNameChangingAgreementViewModel(agreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                Context.StudentNameChangingAgreements.Add(agreement);
+                agreement.Save();
+            }
+        }
+
+
+        public RelayCommand AddPriceChangingAgreementCommand { get => new RelayCommand(AddPriceChangingAgreement); }
+
+        void AddPriceChangingAgreement()
+        {
+            var agreement = new PriceChangingAgreement
+            {
+                ContractId = SelectedContract.Id
+            };
+            var vm = new PriceChangingAgreementViewModel(agreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                Context.PriceChangingAgreements.Add(agreement);
+                agreement.Save();
+            }
+        }
+
+
+        public RelayCommand AddContractTerminationAgreementCommand { get => new RelayCommand(AddContractTerminationAgreement); }
+
+        void AddContractTerminationAgreement()
+        {
+            var agreement = new ContractTerminationAgreement
+            {
+                ContractId = SelectedContract.Id
+            };
+            var vm = new ContractTerminationAgreementViewModel(agreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                Context.ContractTerminationAgreements.Add(agreement);
+                agreement.Save();
+                SelectedContract.IsActive = false;
+                SelectedContract.Save();
+                RaisePropertyChanged("SelectedContract");
+            }
+        }
+
+
+        public RelayCommand AddContractTerminationWithObligationAgreementCommand { get => new RelayCommand(AddContractTerminationWithObligationAgreement); }
+
+        void AddContractTerminationWithObligationAgreement()
+        {
+            var agreement = new ContractTerminationWithObligationAgreement
+            {
+                ContractId = SelectedContract.Id
+            };
+            var vm = new ContractTerminationWithObligationAgreementViewModel(agreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                Context.ContractTerminationWithObligationAgreements.Add(agreement);
+                agreement.Save();
+                SelectedContract.IsActive = false;
+                SelectedContract.Save();
+                RaisePropertyChanged("SelectedContract");
+            }
+        }
+
+        public RelayCommand PrintContractCommand { get => new RelayCommand(PrintContract); }
+
+        void PrintContract()
+        {
+            var doc = new Documents.ContractDocument(SelectedContract);
+            ViewService.ViewInvoker.ShowDocument(doc);
+        }
+
+
+        public RelayCommand AddContragentChangingAgreementCommand { get => new RelayCommand(AddContragentChangingAgreement); }
+
+        void AddContragentChangingAgreement()
+        {
+            var agreement = new ContragentChangingAgreement()
+            {
+                Contract = SelectedContract,
+                OldContragent = SelectedContract.Contragent
+            };
+            var vm = new ContragentChangingAgreementViewModel(agreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                if (agreement.NewContragentId != -1)
+                {
+                    agreement.NewContragent.Save();
+                    agreement.NewContragentId = agreement.NewContragent.Id;
+                    agreement.Save();
+                }
+            }
+        }
 
     }
 }

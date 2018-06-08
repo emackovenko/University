@@ -168,21 +168,49 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Documents\ContractDocument.cs" />
     <Compile Include="ViewModel\Administration\UserListViewModel.cs" />
     <Compile Include="ViewModel\Contingent\ActiveStudentsViewModel.cs" />
     <Compile Include="ViewModel\Payline\ActiveStudentsViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ContractPriceAndPeriodChangingViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ContractTerminationAgreementViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ContractTerminationWithObligationAgreementViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ContragentChangingAgreementViewModel.cs" />
+    <Compile Include="ViewModel\Payline\OrganizationContragentViewModel.cs" />
+    <Compile Include="ViewModel\Payline\PersonContragentViewModel.cs" />
+    <Compile Include="ViewModel\Payline\PriceChangingAgreementViewModel.cs" />
+    <Compile Include="ViewModel\Payline\StudentNameChangingAgreementViewModel.cs" />
     <Compile Include="ViewModel\Payline\StudentViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanImporterViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanListViewModel.cs" />
     <Compile Include="ViewService\DocumentViewer.xaml.cs">
       <DependentUpon>DocumentViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewService\Messenger.cs" />
     <Compile Include="ViewService\ViewerWindow.xaml.cs">
       <DependentUpon>ViewerWindow.xaml</DependentUpon>
     </Compile>
@@ -213,11 +241,41 @@
     <Compile Include="View\Contingent\Pages\ActiveStudents.xaml.cs">
       <DependentUpon>ActiveStudents.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Payline\AuxAgreementView.xaml.cs">
+      <DependentUpon>AuxAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContragentChangingAgreementView.xaml.cs">
+      <DependentUpon>ContragentChangingAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContractPeriodChangingAgreementView.xaml.cs">
+      <DependentUpon>ContractPeriodChangingAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContractPriceAndPeriodChangingAgreementView.xaml.cs">
+      <DependentUpon>ContractPriceAndPeriodChangingAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContractTerminationAgreementView.xaml.cs">
+      <DependentUpon>ContractTerminationAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContractTerminationWithObligationAgreementView.xaml.cs">
+      <DependentUpon>ContractTerminationWithObligationAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\OrganizationContragent.xaml.cs">
+      <DependentUpon>OrganizationContragent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Payline\PaylineWorkspace.xaml.cs">
       <DependentUpon>PaylineWorkspace.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Payline\Pages\ActiveStudents.xaml.cs">
       <DependentUpon>ActiveStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\PersonContragentView.xaml.cs">
+      <DependentUpon>PersonContragentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\PriceChangingAgreementView.xaml.cs">
+      <DependentUpon>PriceChangingAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\StudentNameChangingAgreementView.xaml.cs">
+      <DependentUpon>StudentNameChangingAgreementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Payline\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
@@ -279,11 +337,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Payline\AuxAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContragentChangingAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContractPeriodChangingAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContractPriceAndPeriodChangingAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContractTerminationAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContractTerminationWithObligationAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\OrganizationContragent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Payline\PaylineWorkspace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Payline\Pages\ActiveStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\PersonContragentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\PriceChangingAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\StudentNameChangingAgreementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

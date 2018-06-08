@@ -292,6 +292,7 @@
     <Compile Include="WorkOk\OrganizationContragent.cs" />
     <Compile Include="WorkOk\PaymentBalance.cs" />
     <Compile Include="WorkOk\PaymentDelay.cs" />
+    <Compile Include="WorkOk\PaymentDictionary.cs" />
     <Compile Include="WorkOk\PaymentPeriodType.cs" />
     <Compile Include="WorkOk\PersonContragent.cs" />
     <Compile Include="WorkOk\PriceChangingAgreement.cs" />

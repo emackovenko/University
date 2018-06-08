@@ -77,5 +77,15 @@ namespace ResourceLibrary.Properties {
                 return ResourceManager.GetString("EducationPlanCustomScheme", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] StudentContract {
+            get {
+                object obj = ResourceManager.GetObject("StudentContract", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
