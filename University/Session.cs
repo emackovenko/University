@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Data.University;
 using MySql.Data.MySqlClient;
 using WorkOk = Data.WorkOk;
+using Astu = Data.Astu;
+using Oracle.DataAccess.Client;
 
 namespace University
 {
@@ -56,7 +58,8 @@ namespace University
             {
                 _data = data;
                 CurrentUser = user;
-                //WorkOkAuth();
+                WorkOkAuth();
+                AstuAuth();
                 return true; 
             }
         }
@@ -77,6 +80,15 @@ namespace University
 
             var connection = new MySqlConnection(csb.ToString());
             return WorkOk.Context.Auth(connection);
+        }
+
+        static void AstuAuth()
+        {
+            var connecion = new OracleConnection()
+            {
+                ConnectionString = "User Id=mackovenko_e;Server=10.0.1.3;Connection Timeout=0;Unicode=True;Service Name=ASTUMRSK"
+            };
+            connecion.Open();
         }
     }
 }

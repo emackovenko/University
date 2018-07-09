@@ -103,6 +103,10 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Oracle\product\10.2.0\client_1\ODP.NET\bin\1.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="Pomelo.EntityFrameworkCore.MySql, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Pomelo.EntityFrameworkCore.MySql.2.0.1\lib\netstandard2.0\Pomelo.EntityFrameworkCore.MySql.dll</HintPath>
     </Reference>
@@ -167,6 +171,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\Administration\UserListViewModel.cs" />
     <Compile Include="ViewModel\Contingent\ActiveStudentsViewModel.cs" />
+    <Compile Include="ViewModel\ServiceTasks\AstuOrdersExportViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanImporterViewModel.cs" />
     <Compile Include="ViewModel\TrainingDivision\EducationPlanListViewModel.cs" />
     <Compile Include="ViewService\ViewerWindow.xaml.cs">
@@ -198,6 +203,12 @@
     </Compile>
     <Compile Include="View\Contingent\Pages\ActiveStudents.xaml.cs">
       <DependentUpon>ActiveStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ServiceTasks\Pages\AstuOrdersExportView.xaml.cs">
+      <DependentUpon>AstuOrdersExportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ServiceTasks\ServiceTasksWorkspace.xaml.cs">
+      <DependentUpon>ServiceTasksWorkspace.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TrainingDivision\EducationPlanImporterView.xaml.cs">
       <DependentUpon>EducationPlanImporterView.xaml</DependentUpon>
@@ -249,6 +260,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Contingent\Pages\ActiveStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ServiceTasks\Pages\AstuOrdersExportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ServiceTasks\ServiceTasksWorkspace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,40 @@
+﻿<Page x:Class="University.View.ServiceTasks.Pages.AstuOrdersExportView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University.View.ServiceTasks.Pages"
+      xmlns:vm="clr-namespace:University.ViewModel.ServiceTasks"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AstuOrdersExportView">
+    <Page.DataContext>
+        <vm:AstuOrdersExportViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto"/>
+            <RowDefinition
+                Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="32"/>
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="20 0"
+                Content="Сгенерировать SQL"
+                Command="{Binding Path=DoExportCommand}"/>
+        </Grid>
+        <TextBox
+            Grid.Row="1"
+            Style="{StaticResource LogTextBox}"
+            Text="{Binding Path=Log}"/>
+    </Grid>
+</Page>

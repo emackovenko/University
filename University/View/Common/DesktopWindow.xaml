@@ -31,6 +31,12 @@
             </c:ExTabItem>
             <c:ExTabItem
                 vs:ProtectedView.Identity="Administration"
+                Title="Служебные задачи"
+                Icon="/ResourceLibrary;component/Images/crown.png">
+                <admin:AdministrationWorkspace/>
+            </c:ExTabItem>
+            <c:ExTabItem
+                vs:ProtectedView.Identity="Administration"
                 Title="Администрирование"
                 Icon="/ResourceLibrary;component/Images/hacker.png">
                 <admin:AdministrationWorkspace/>
