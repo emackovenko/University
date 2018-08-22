@@ -24,11 +24,11 @@
                 Icon="/ResourceLibrary;component/Images/students.png">
                 <contingent:ContingentWorkspace/>
             </c:ExTabItem>
-            <!--<c:ExTabItem
+            <c:ExTabItem
                 Title="Внебюджетное отделение"
                 Icon="/ResourceLibrary;component/Images/transaction.png">
                 <payline:PaylineWorkspace/>
-            </c:ExTabItem>-->
+            </c:ExTabItem>
             <c:ExTabItem
                 Title="Учебный отдел"
                 Icon="/ResourceLibrary;component/Images/planning.png">

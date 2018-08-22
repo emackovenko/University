@@ -59,6 +59,18 @@ namespace University.ViewModel.Payline
 
         #endregion
 
+        public RelayCommand EditContractCommand { get => new RelayCommand(EditContract); }
+
+        void EditContract()
+        {
+            var vm = new ContractViewModel(SelectedContract);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                SelectedContract.Save();
+                RaisePropertyChanged("SelectedContract");
+            }
+        }
+
         public RelayCommand AddStudentNameChangingAgreementCommand { get => new RelayCommand(AddStudentNameChangingAgreement); }
         
         void AddStudentNameChangingAgreement()
@@ -70,7 +82,7 @@ namespace University.ViewModel.Payline
             var vm = new StudentNameChangingAgreementViewModel(agreement);
             if (ViewService.ViewInvoker.ShowEditorWindow(vm))
             {
-                Context.StudentNameChangingAgreements.Add(agreement);
+                //Context.StudentNameChangingAgreements.Add(agreement);
                 agreement.Save();
             }
         }
@@ -87,7 +99,7 @@ namespace University.ViewModel.Payline
             var vm = new PriceChangingAgreementViewModel(agreement);
             if (ViewService.ViewInvoker.ShowEditorWindow(vm))
             {
-                Context.PriceChangingAgreements.Add(agreement);
+                //Context.PriceChangingAgreements.Add(agreement);
                 agreement.Save();
             }
         }
@@ -104,7 +116,7 @@ namespace University.ViewModel.Payline
             var vm = new ContractTerminationAgreementViewModel(agreement);
             if (ViewService.ViewInvoker.ShowEditorWindow(vm))
             {
-                Context.ContractTerminationAgreements.Add(agreement);
+                //Context.ContractTerminationAgreements.Add(agreement);
                 agreement.Save();
                 SelectedContract.IsActive = false;
                 SelectedContract.Save();
@@ -124,7 +136,7 @@ namespace University.ViewModel.Payline
             var vm = new ContractTerminationWithObligationAgreementViewModel(agreement);
             if (ViewService.ViewInvoker.ShowEditorWindow(vm))
             {
-                Context.ContractTerminationWithObligationAgreements.Add(agreement);
+                //Context.ContractTerminationWithObligationAgreements.Add(agreement);
                 agreement.Save();
                 SelectedContract.IsActive = false;
                 SelectedContract.Save();

@@ -229,6 +229,7 @@
     <Compile Include="ViewModel\Payline\ContractPriceAndPeriodChangingViewModel.cs" />
     <Compile Include="ViewModel\Payline\ContractTerminationAgreementViewModel.cs" />
     <Compile Include="ViewModel\Payline\ContractTerminationWithObligationAgreementViewModel.cs" />
+    <Compile Include="ViewModel\Payline\ContractViewModel.cs" />
     <Compile Include="ViewModel\Payline\ContragentChangingAgreementViewModel.cs" />
     <Compile Include="ViewModel\Payline\OrganizationContragentViewModel.cs" />
     <Compile Include="ViewModel\Payline\PersonContragentViewModel.cs" />
@@ -273,6 +274,9 @@
     </Compile>
     <Compile Include="View\Payline\AuxAgreementView.xaml.cs">
       <DependentUpon>AuxAgreementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Payline\ContractView.xaml.cs">
+      <DependentUpon>ContractView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Payline\ContragentChangingAgreementView.xaml.cs">
       <DependentUpon>ContragentChangingAgreementView.xaml</DependentUpon>
@@ -368,6 +372,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Payline\AuxAgreementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Payline\ContractView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

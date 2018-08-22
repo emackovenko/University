@@ -274,7 +274,8 @@
                                 </Button>
                                 <Button
                                     ToolTip="Редактировать"
-                                    Style="{StaticResource ToolButton}">
+                                    Style="{StaticResource ToolButton}"
+                                    Command="{Binding Path=EditContractCommand}">
                                     <Image
                                         Style="{StaticResource PictureEdit}"/>
                                 </Button>

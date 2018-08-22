@@ -36,7 +36,7 @@ namespace Data.University
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=192.168.0.48;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
+            optionsBuilder.UseMySql("server=localhost;UserId=emackovenko;Password=trustno1;database=University;characterset=utf8;");
         }
 
         

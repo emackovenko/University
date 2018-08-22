@@ -155,12 +155,12 @@ namespace Data.WorkOk
             get
             {
                 var collection = new List<AuxAgreement>();
-                collection.AddRange(Context.StudentNameChangingAgreements.Where(a => a.ContractId == Id));
-                collection.AddRange(Context.PriceChangingAgreements.Where(a => a.ContractId == Id));
-                collection.AddRange(Context.ContractPeriodChangingAgreements.Where(a => a.ContractId == Id));
-                collection.AddRange(Context.ContractPriceAndPeriodChangingAgreements.Where(a => a.ContractId == Id));
-                collection.AddRange(Context.ContractTerminationAgreements.Where(a => a.ContractId == Id));
-                collection.AddRange(Context.ContractTerminationWithObligationAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.StudentNameChangingAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.PriceChangingAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.ContractPeriodChangingAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.ContractPriceAndPeriodChangingAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.ContractTerminationAgreements.Where(a => a.ContractId == Id));
+                //collection.AddRange(Context.ContractTerminationWithObligationAgreements.Where(a => a.ContractId == Id));
                 return collection;
             }
         }
