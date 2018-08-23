@@ -69,7 +69,7 @@ namespace University
         {
             var csb = new MySqlConnectionStringBuilder
             {
-                Server = "localhost",
+                Server = "192.168.0.48",
                 Port = 3306,
                 Database = "work_ok",
                 UserID = "emackovenko",

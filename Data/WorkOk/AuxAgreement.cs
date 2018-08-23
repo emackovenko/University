@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Data.WorkOk
 {
     [TableName("platn.dopsogl")]
-    public abstract class AuxAgreement: Entity
+    public class AuxAgreement: Entity
     {
         public AuxAgreement()
         {

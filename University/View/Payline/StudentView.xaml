@@ -408,7 +408,8 @@
                                     </xcad:DropDownButton>
                                     <Button
                                         ToolTip="Редактировать"
-                                        Style="{StaticResource ToolButton}">
+                                        Style="{StaticResource ToolButton}"
+                                        Command="{Binding Path=EditAuxAgreementCommand}">
                                         <Image
                                             Style="{StaticResource PictureEdit}"/>
                                     </Button>
@@ -427,7 +428,8 @@
                                 </StackPanel>
                                 <ListView
                                     Grid.Row="1"
-                                    ItemsSource="{Binding Path=Agreements}">
+                                    ItemsSource="{Binding Path=Agreements}"
+                                    SelectedItem="{Binding Path=SelectedAgreement}">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn

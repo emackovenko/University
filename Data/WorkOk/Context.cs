@@ -39,6 +39,7 @@ namespace Data.WorkOk
             PaymentDelays = new EntitySet<PaymentDelay>();
             AgreementTypes = new EntitySet<AgreementType>();
             StudentNameChangingOrders = new EntitySet<StudentNameChangingOrder>();
+            AuxAgreements = new EntitySet<AuxAgreement>();
             //StudentNameChangingAgreements = new EntitySet<StudentNameChangingAgreement>("WHERE vid = 7");
             //PriceChangingAgreements = new EntitySet<PriceChangingAgreement>("WHERE vid = 8");
             //ContractPeriodChangingAgreements = new EntitySet<ContractPeriodChangingAgreement>("WHERE vid = 9");
@@ -71,6 +72,7 @@ namespace Data.WorkOk
         public static EntitySet<PaymentDelay> PaymentDelays { get; set; }
         public static EntitySet<AgreementType> AgreementTypes { get; set; }
         public static EntitySet<StudentNameChangingOrder> StudentNameChangingOrders { get; set; }
+        public static EntitySet<AuxAgreement> AuxAgreements { get; set; }
         //public static EntitySet<StudentNameChangingAgreement> StudentNameChangingAgreements { get; set; }
         //public static EntitySet<PriceChangingAgreement> PriceChangingAgreements { get; set; }
         //public static EntitySet<ContractPeriodChangingAgreement> ContractPeriodChangingAgreements { get; set; }

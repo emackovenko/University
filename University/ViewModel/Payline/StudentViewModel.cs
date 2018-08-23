@@ -48,6 +48,8 @@ namespace University.ViewModel.Payline
             get => new ObservableCollection<AuxAgreement>(_selectedContract.Agreements);
         }
 
+        public AuxAgreement SelectedAgreement { get; set; }
+
         #endregion
 
         #region Navigated collections
@@ -68,6 +70,18 @@ namespace University.ViewModel.Payline
             {
                 SelectedContract.Save();
                 RaisePropertyChanged("SelectedContract");
+            }
+        }
+
+        public RelayCommand EditAuxAgreementCommand { get => new RelayCommand(EditAuxAgreement); }
+
+        void EditAuxAgreement()
+        {
+            var vm = new AuxAgreementViewModel(SelectedAgreement);
+            if (ViewService.ViewInvoker.ShowEditorWindow(vm))
+            {
+                SelectedAgreement.Save();
+                RaisePropertyChanged("SelectedAgreement");
             }
         }
 
