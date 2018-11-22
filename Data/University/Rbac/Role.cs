@@ -34,6 +34,16 @@ namespace Data.University
         /// </summary>
         public List<InterfacePermission> AvailableViews { get; set; }
 
+        /// <summary>
+        /// Для пользователя требуется доступ к данным из БД WorkOk
+        /// </summary>
+        public bool? IsWorkOkAccessRequired { get; set; }
+
+        /// <summary>
+        /// Для пользователя требуется доступ к данным из БД rating.astu
+        /// </summary>
+        public bool? IsAstuAccessRequired { get; set; }
+
         public Role()
         {
             Users = new List<User>();

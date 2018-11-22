@@ -167,21 +167,11 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CathedraId");
-
-                    b.Property<int?>("DisciplineCycleId");
-
-                    b.Property<int?>("EducationCompetenceId");
-
                     b.Property<string>("Name");
 
+                    b.Property<string>("ShortName");
+
                     b.HasKey("Id");
-
-                    b.HasIndex("CathedraId");
-
-                    b.HasIndex("DisciplineCycleId");
-
-                    b.HasIndex("EducationCompetenceId");
 
                     b.ToTable("Disciplines");
                 });
@@ -271,15 +261,19 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime?>("BeginDate");
+
                     b.Property<int?>("CathedraId");
 
                     b.Property<int?>("DirectionId");
 
                     b.Property<int?>("EducationFormId");
 
-                    b.Property<int?>("FacultyId");
+                    b.Property<int?>("EducationProgramTypeId");
 
-                    b.Property<bool?>("IsAcceleratedLearning");
+                    b.Property<DateTime?>("EndDate");
+
+                    b.Property<int?>("FacultyId");
 
                     b.Property<string>("Name");
 
@@ -293,9 +287,99 @@ namespace Data.Migrations
 
                     b.HasIndex("EducationFormId");
 
+                    b.HasIndex("EducationProgramTypeId");
+
                     b.HasIndex("FacultyId");
 
                     b.ToTable("EducationPlans");
+                });
+
+            modelBuilder.Entity("Data.University.EducationPlanCompoment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationPlanCompoments");
+                });
+
+            modelBuilder.Entity("Data.University.EducationPlanGraphic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool?>("CourseWorkTest");
+
+                    b.Property<bool?>("CreditTest");
+
+                    b.Property<bool?>("DiffCreditTest");
+
+                    b.Property<int?>("EducationPlanItemElementId");
+
+                    b.Property<int?>("EducationPlanItemId");
+
+                    b.Property<bool?>("ExaminationTest");
+
+                    b.Property<int>("IndependentWorkHours");
+
+                    b.Property<int>("LaboratoryHours");
+
+                    b.Property<int>("LectionHours");
+
+                    b.Property<int>("PracticeHours");
+
+                    b.Property<int>("SemesterNo");
+
+                    b.Property<bool?>("SettlementWorkTest");
+
+                    b.Property<double>("Zet");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EducationPlanItemId");
+
+                    b.ToTable("EducationPlanGraphics");
+                });
+
+            modelBuilder.Entity("Data.University.EducationPlanItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<int?>("ComponentId");
+
+                    b.Property<int?>("DisciplineCycleId");
+
+                    b.Property<int?>("DisciplineId");
+
+                    b.Property<int?>("EducationCompetenceId");
+
+                    b.Property<int?>("EducationPlanComponentId");
+
+                    b.Property<int?>("EducationPlanId");
+
+                    b.Property<bool?>("IsChecked");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComponentId");
+
+                    b.HasIndex("DisciplineCycleId");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.HasIndex("EducationCompetenceId");
+
+                    b.HasIndex("EducationPlanId");
+
+                    b.ToTable("EducationPlanItems");
                 });
 
             modelBuilder.Entity("Data.University.EducationProgramType", b =>
@@ -561,6 +645,10 @@ namespace Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool?>("IsAstuAccessRequired");
+
+                    b.Property<bool?>("IsWorkOkAccessRequired");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -706,208 +794,271 @@ namespace Data.Migrations
                 {
                     b.HasOne("Data.University.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.District", "District")
                         .WithMany()
-                        .HasForeignKey("DistrictId");
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Locality", "Locality")
                         .WithMany()
-                        .HasForeignKey("LocalityId");
+                        .HasForeignKey("LocalityId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Region", "Region")
                         .WithMany()
-                        .HasForeignKey("RegionId");
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Street", "Street")
                         .WithMany()
-                        .HasForeignKey("StreetId");
+                        .HasForeignKey("StreetId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Town", "Town")
                         .WithMany()
-                        .HasForeignKey("TownId");
+                        .HasForeignKey("TownId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.CommandPermission", b =>
                 {
                     b.HasOne("Data.University.Command", "Command")
                         .WithMany("Permissions")
-                        .HasForeignKey("CommandId");
+                        .HasForeignKey("CommandId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Role", "Role")
                         .WithMany("AvailableCommands")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Direction", b =>
                 {
                     b.HasOne("Data.University.EducationLevel", "EducationLevel")
                         .WithMany()
-                        .HasForeignKey("EducationLevelId");
+                        .HasForeignKey("EducationLevelId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.EducationProgramType", "EducationProgramType")
                         .WithMany()
-                        .HasForeignKey("EducationProgramTypeId");
+                        .HasForeignKey("EducationProgramTypeId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.EducationStandartType", "EducationStandartType")
                         .WithMany()
-                        .HasForeignKey("EducationStandartTypeId");
-                });
-
-            modelBuilder.Entity("Data.University.Discipline", b =>
-                {
-                    b.HasOne("Data.University.Cathedra", "Cathedra")
-                        .WithMany()
-                        .HasForeignKey("CathedraId");
-
-                    b.HasOne("Data.University.DisciplineCycle", "DisciplineCycle")
-                        .WithMany("Disciplines")
-                        .HasForeignKey("DisciplineCycleId");
-
-                    b.HasOne("Data.University.EducationCompetence", "EducationCompetence")
-                        .WithMany("Disciplines")
-                        .HasForeignKey("EducationCompetenceId");
+                        .HasForeignKey("EducationStandartTypeId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.District", b =>
                 {
                     b.HasOne("Data.University.Region", "Region")
                         .WithMany("Districts")
-                        .HasForeignKey("RegionId");
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.EducationPlan", b =>
                 {
                     b.HasOne("Data.University.Cathedra", "Cathedra")
                         .WithMany()
-                        .HasForeignKey("CathedraId");
+                        .HasForeignKey("CathedraId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Direction", "Direction")
                         .WithMany()
-                        .HasForeignKey("DirectionId");
+                        .HasForeignKey("DirectionId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.EducationForm", "EducationForm")
                         .WithMany()
-                        .HasForeignKey("EducationFormId");
+                        .HasForeignKey("EducationFormId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Data.University.EducationProgramType", "EducationProgramType")
+                        .WithMany()
+                        .HasForeignKey("EducationProgramTypeId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Faculty", "Faculty")
                         .WithMany()
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("Data.University.EducationPlanGraphic", b =>
+                {
+                    b.HasOne("Data.University.EducationPlanItem", "EducationPlanItem")
+                        .WithMany("Graphics")
+                        .HasForeignKey("EducationPlanItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("Data.University.EducationPlanItem", b =>
+                {
+                    b.HasOne("Data.University.EducationPlanCompoment", "Component")
+                        .WithMany()
+                        .HasForeignKey("ComponentId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Data.University.DisciplineCycle", "Cycle")
+                        .WithMany()
+                        .HasForeignKey("DisciplineCycleId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Data.University.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Data.University.EducationCompetence", "Competence")
+                        .WithMany()
+                        .HasForeignKey("EducationCompetenceId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Data.University.EducationPlan", "EducationPlan")
+                        .WithMany("Items")
+                        .HasForeignKey("EducationPlanId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Group", b =>
                 {
                     b.HasOne("Data.University.EducationForm", "EducationForm")
                         .WithMany()
-                        .HasForeignKey("EducationFormId");
+                        .HasForeignKey("EducationFormId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.EducationPlan", "EducationPlan")
                         .WithMany()
-                        .HasForeignKey("EducationPlanId");
+                        .HasForeignKey("EducationPlanId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Faculty", "Faculty")
                         .WithMany("Groups")
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.IdentityDocument", b =>
                 {
                     b.HasOne("Data.University.Citizenship", "Citizenship")
                         .WithMany()
-                        .HasForeignKey("CitizenshipId");
+                        .HasForeignKey("CitizenshipId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.IdentityOrganization", "Organization")
                         .WithMany()
-                        .HasForeignKey("OrganizationId");
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Person", "Person")
                         .WithMany("IdentityDocuments")
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.IdentityType", "Type")
                         .WithMany()
-                        .HasForeignKey("TypeId");
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.InterfacePermission", b =>
                 {
                     b.HasOne("Data.University.InterfaceElement", "InterfaceElement")
                         .WithMany("Permissions")
-                        .HasForeignKey("InterfaceElementId");
+                        .HasForeignKey("InterfaceElementId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
+                        .WithMany("AvailableViews")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Locality", b =>
                 {
                     b.HasOne("Data.University.District", "District")
                         .WithMany("Localities")
-                        .HasForeignKey("DistrictId");
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Person", b =>
                 {
                     b.HasOne("Data.University.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId");
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Region", b =>
                 {
                     b.HasOne("Data.University.Country", "Country")
                         .WithMany("Regions")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Student", b =>
                 {
                     b.HasOne("Data.University.FinanceSource", "FinanceSource")
                         .WithMany()
-                        .HasForeignKey("FinanceSourceId");
+                        .HasForeignKey("FinanceSourceId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Group", "Group")
                         .WithMany("Students")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.StudentState", "State")
                         .WithMany()
-                        .HasForeignKey("StudentStateId");
+                        .HasForeignKey("StudentStateId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Teacher", b =>
                 {
                     b.HasOne("Data.University.Cathedra", "Cathedra")
                         .WithMany()
-                        .HasForeignKey("CathedraId");
+                        .HasForeignKey("CathedraId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Data.University.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.Town", b =>
                 {
                     b.HasOne("Data.University.Region", "Region")
                         .WithMany("Towns")
-                        .HasForeignKey("RegionId");
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Data.University.User", b =>
                 {
                     b.HasOne("Data.University.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 #pragma warning restore 612, 618
         }

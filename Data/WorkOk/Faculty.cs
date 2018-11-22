@@ -15,6 +15,9 @@ namespace Data.WorkOk
         [DbFieldInfo("name")]
         public string Name { get; set; }
 
+        [DbFieldInfo("mean")]
+        public string ShortName { get; set; }
+
         [DbFieldInfo("codbar")]
         public string AstuId { get; set; }
     }

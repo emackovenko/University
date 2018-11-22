@@ -206,7 +206,7 @@ namespace Data.WorkOk
                 case DbFieldType.Double:
                     return value.ToString();
                 case DbFieldType.DateTime:
-                    return string.Format(@"TO_DATE('{0}', 'YYYYMMDD')", ((DateTime)value).ToString("yyyyMMdd"));
+                    return string.Format(@"STR_TO_DATE('{0}', '%Y%m%d')", ((DateTime)value).ToString("yyyyMMdd"));
                 case DbFieldType.Boolean:
                     return ((bool)value) == true ? "1" : "0";
                 default:

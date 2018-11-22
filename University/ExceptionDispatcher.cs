@@ -135,7 +135,7 @@ namespace University
                 _parameters.Add(p.ToString());
             }
             WriteErrorLog();
-            string errorMessage = string.Format("При работе программы произошла необрабатываемая ошибка.\n\nТекст ошибки:\n{0}", exception.Message);
+            string errorMessage = string.Format("При работе программы произошла необрабатываемая ошибка.\n\nТекст ошибки:\n{0}", exception.InnerException.Message ?? exception.Message);
             MessageBox.Show(errorMessage, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
 

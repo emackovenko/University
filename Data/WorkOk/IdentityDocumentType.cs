@@ -12,6 +12,9 @@ namespace Data.WorkOk
         [DbFieldInfo("pin", DbFieldType.Integer)]
         public int Id { get; set; }
 
+        [DbFieldInfo("name")]
+        public string Name { get; set; }
+
         [DbFieldInfo("fis_code", DbFieldType.Integer)]
         public int? FisCode { get; set; }
     }

@@ -1,0 +1,454 @@
+﻿<UserControl x:Class="University.View.Payline.StudentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:University.View.Payline"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:University.ViewModel.Payline"
+             xmlns:xcad="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             Height="Auto"
+             MinHeight="330"
+             Width="800">
+    <!--<UserControl.DataContext>
+        <vm:StudentViewModel/>
+    </UserControl.DataContext>-->
+    <Grid>
+        <TabControl>
+            <TabItem
+                Header="Личные данные">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*"/>
+                        <ColumnDefinition
+                            Width="3"/>
+                        <ColumnDefinition
+                            Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid
+                        Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                            <RowDefinition
+                                Height="32"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="Auto"/>
+                            <ColumnDefinition
+                                Width="3"/>
+                            <ColumnDefinition
+                                x:Name="firstDataColumn"
+                                Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Text="Фамилия"/>
+                        <TextBox
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Text="{Binding Path=Student.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Text="Имя"/>
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Text="{Binding Path=Student.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Text="Отчество"/>
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Text="{Binding Path=Student.Patronimyc, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Text="Пол"/>
+                        <ComboBox
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Text="{Binding Path=Student.Gender, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox.Items>
+                                <sys:String>мужской</sys:String>
+                                <sys:String>женский</sys:String>
+                            </ComboBox.Items>
+                        </ComboBox>
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Text="Дата рождения"/>
+                        <DatePicker
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            SelectedDate="{Binding Path=Student.Info.BirthDate, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left"
+                            Text="Адрес"/>
+                        <TextBox
+                            Grid.Row="6"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            Text="{Binding Path=Student.Info.Address, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left"
+                            Text="Телефон"/>
+                        <TextBox
+                            Grid.Row="8"
+                            Grid.ColumnSpan="3"
+                            VerticalAlignment="Center"
+                            Text="{Binding Path=Student.Info.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <GroupBox
+                        Grid.Column="2"
+                        VerticalAlignment="Top"
+                        Height="Auto"
+                        Header="Паспортные данные">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="32"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto"/>
+                                <ColumnDefinition
+                                    Width="3"/>
+                                <ColumnDefinition
+                                    Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Text="Серия и номер"/>
+                            <TextBox
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Student.Info.IdentityDocumentProps, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Text="Дата выдачи"/>
+                            <DatePicker
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                SelectedDate="{Binding Path=Student.Info.IdentityDocumentDate, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Text="Кем выдан"/>
+                            <TextBox
+                                Grid.Row="3"
+                                Grid.ColumnSpan="3"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Student.Info.IdentityDocumentOrganization, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Text="Место рождения"/>
+                            <TextBox
+                                Grid.Row="5"
+                                Grid.ColumnSpan="3"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Student.Info.BirthPlace, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Text="Тип документа"/>
+                            <ComboBox
+                                Grid.Row="6"
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                ItemsSource="{Binding Path=IdentityDocumentTypes}"
+                                SelectedItem="{Binding Path=Student.Info.IdentityDocumentType, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Name"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="Договоры">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*"/>
+                        <ColumnDefinition
+                            Width="3"/>
+                        <ColumnDefinition
+                            Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox
+                        Grid.Column="0"
+                        Header="Договоры">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="32"/>
+                                <RowDefinition
+                                    Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel
+                                Grid.Row="0"
+                                Orientation="Horizontal">
+                                <Button
+                                    ToolTip="Добавить"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PictureAdd}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Редактировать"
+                                    Style="{StaticResource ToolButton}"
+                                    Command="{Binding Path=EditContractCommand}">
+                                    <Image
+                                        Style="{StaticResource PictureEdit}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Удалить"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PictureDelete}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Печать"
+                                    Command="{Binding Path=PrintContractCommand}"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Style="{StaticResource PicturePrint}"/>
+                                </Button>
+                                <Button
+                                    ToolTip="Расторжение"
+                                    Style="{StaticResource ToolButton}">
+                                    <Image
+                                        Source="/ResourceLibrary;component/Images/Buttons/document_stop.png"/>
+                                </Button>
+                            </StackPanel>
+                            <ListBox
+                                x:Name="contractList"
+                                Grid.Row="1"
+                                ItemsSource="{Binding Path=Student.Contracts}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                SelectedItem="{Binding Path=SelectedContract}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.Style>
+                                                <Style
+                                                    TargetType="Grid">
+                                                    <Style.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding Path=IsActive}"
+                                                            Value="True">
+                                                            <Setter
+                                                                Property="Background"
+                                                                Value="#FFAFFF9E"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding Path=IsActive}"
+                                                            Value="False">
+                                                            <Setter
+                                                                Property="Background"
+                                                                Value="#FFCCCDCB"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
+                                            <StackPanel
+                                                Orientation="Vertical">
+                                                <TextBlock
+                                                    FontWeight="Bold"
+                                                    Text="{Binding Path=Number, StringFormat=№{0}}"/>
+                                                <TextBlock
+                                                    FontWeight="Bold"
+                                                    Text="{Binding Path=Date, Converter={StaticResource DateConverter}, StringFormat=от {0} г.}"/>
+                                                <WrapPanel                                                
+                                                    MaxWidth="{Binding ElementName=contractList, Path=ActualWidth}" Orientation="Vertical">
+                                                    <TextBlock
+                                                        FontSize="10"
+                                                        TextWrapping="Wrap"
+                                                        Text="{Binding Path=Contragent.Name, StringFormat=Плательщик: {0}}"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </GroupBox>
+                    <Grid
+                        Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="*"/>
+                        </Grid.RowDefinitions>
+                        <GroupBox
+                            Grid.Row="0"
+                            Header="Дополнительные соглашения">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition
+                                        Height="32"/>
+                                    <RowDefinition
+                                        Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Orientation="Horizontal">
+                                    <xcad:DropDownButton
+                                        BorderBrush="{StaticResource ToolButtonBorderGradient}"
+                                        Background="{x:Null}"
+                                        BorderThickness="1"
+                                        Height="32">
+                                        <Image
+                                            Style="{StaticResource PictureAdd}"/>
+                                        <xcad:DropDownButton.DropDownContent>
+                                            <StackPanel
+                                                Orientation="Vertical">
+                                                <MenuItem
+                                                    Header="Смена фамилии"
+                                                    Command="{Binding Path=AddStudentNameChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение стоимости"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Расторжение договора"
+                                                    Command="{Binding Path=AddContractTerminationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Расторжение договора с обязательством"
+                                                    Command="{Binding Path=AddContractTerminationWithObligationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение срока договора+"
+                                                    Command="{Binding Path=AddContractTerminationWithObligationAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Изменение стоимости и срока договора+"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Смена плательщика"
+                                                    Command="{Binding Path=AddContragentChangingAgreementCommand}"/>
+                                                <MenuItem
+                                                    Header="Перевод на ускоренное обучение+"
+                                                    Command="{Binding Path=AddPriceChangingAgreementCommand}"/>
+                                            </StackPanel>
+                                        </xcad:DropDownButton.DropDownContent>
+                                    </xcad:DropDownButton>
+                                    <Button
+                                        ToolTip="Редактировать"
+                                        Style="{StaticResource ToolButton}"
+                                        Command="{Binding Path=EditAuxAgreementCommand}">
+                                        <Image
+                                            Style="{StaticResource PictureEdit}"/>
+                                    </Button>
+                                    <Button
+                                        ToolTip="Удалить"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PictureDelete}"/>
+                                    </Button>
+                                    <Button
+                                        ToolTip="Печать"
+                                        Style="{StaticResource ToolButton}">
+                                        <Image
+                                            Style="{StaticResource PicturePrint}"/>
+                                    </Button>
+                                </StackPanel>
+                                <ListView
+                                    Grid.Row="1"
+                                    ItemsSource="{Binding Path=Agreements}"
+                                    SelectedItem="{Binding Path=SelectedAgreement}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn
+                                                Header="Номер"
+                                                DisplayMemberBinding="{Binding Path=Number}"/>
+                                            <GridViewColumn
+                                                Header="Дата"
+                                                DisplayMemberBinding="{Binding Path=Date, Converter={StaticResource DateConverter}}"/>
+                                            <GridViewColumn
+                                                Header="Тип"
+                                                DisplayMemberBinding="{Binding Path=AgreementType.Name}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

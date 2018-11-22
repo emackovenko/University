@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Data.University
@@ -58,5 +59,11 @@ namespace Data.University
         /// Тип образовательной программы
         /// </summary>
         public EducationProgramType EducationProgramType { get; set; }
+
+        [NotMapped]
+        public string DisplayName
+        {
+            get => string.Format("{0} {1}", Code, Name);
+        }
     }
 }

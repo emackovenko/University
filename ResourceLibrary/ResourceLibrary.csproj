@@ -67,6 +67,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -84,6 +85,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Documents\StudentContract.dotx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -695,7 +697,13 @@
     <Resource Include="Images\planning.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\checklist.png" />
+    <Resource Include="Images\transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Buttons\word.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

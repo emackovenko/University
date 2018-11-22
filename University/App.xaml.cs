@@ -21,10 +21,15 @@ namespace University
         {
             base.OnStartup(e);
 
+            // Запуск перехватчика ошибок
             App.Current.DispatcherUnhandledException += (new ExceptionDispatcher()).Handler;
-
-            var authWindow = new AuthWindow();
             
+            // Регистрация библиотек GemBox
+            GemBox.Document.ComponentInfo.SetLicense("DH5L-PTFV-SL2S-5PCN");
+            GemBox.Spreadsheet.SpreadsheetInfo.SetLicense("E43Y-75J1-FTBX-2T9U");
+
+            // Авторизация
+            var authWindow = new AuthWindow();            
             if (authWindow.ShowDialog() ?? false)
             {
                 var desktop = new DesktopWindow();

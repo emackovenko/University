@@ -10,6 +10,7 @@
         xmlns:contingent="clr-namespace:University.View.Contingent"
         xmlns:admin="clr-namespace:University.View.Administration"
         xmlns:training="clr-namespace:University.View.TrainingDivision"
+        xmlns:payline="clr-namespace:University.View.Payline"
         mc:Ignorable="d"
         Title="Рубцовский индустриальный институт" Height="406.4" Width="688.2" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
@@ -24,19 +25,16 @@
                 <contingent:ContingentWorkspace/>
             </c:ExTabItem>
             <c:ExTabItem
-                vs:ProtectedView.Identity="Administration"
+                Title="Внебюджетное отделение"
+                Icon="/ResourceLibrary;component/Images/transaction.png">
+                <payline:PaylineWorkspace/>
+            </c:ExTabItem>
+            <c:ExTabItem
                 Title="Учебный отдел"
                 Icon="/ResourceLibrary;component/Images/planning.png">
                 <training:TrainingDivisionWorkspace/>
             </c:ExTabItem>
             <c:ExTabItem
-                vs:ProtectedView.Identity="Administration"
-                Title="Служебные задачи"
-                Icon="/ResourceLibrary;component/Images/crown.png">
-                <admin:AdministrationWorkspace/>
-            </c:ExTabItem>
-            <c:ExTabItem
-                vs:ProtectedView.Identity="Administration"
                 Title="Администрирование"
                 Icon="/ResourceLibrary;component/Images/hacker.png">
                 <admin:AdministrationWorkspace/>

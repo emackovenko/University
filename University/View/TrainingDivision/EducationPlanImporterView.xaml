@@ -16,6 +16,8 @@
             <RowDefinition
                 Height="Auto"/>
             <RowDefinition
+                Height="Auto"/>
+            <RowDefinition
                 Height="32"/>
             <RowDefinition
                 Height="Auto"/>
@@ -51,24 +53,178 @@
                 Content="..."
                 Command="{Binding Path=OpenFileCommand}"/>
         </StackPanel>
-        <WrapPanel
-            Grid.Row="1"
-            Grid.ColumnSpan="3"
-            Width="500"
-            HorizontalAlignment="Left">
-            <CheckBox
-                Margin="15 10"
-                Content="Добавлять новые объекты"
-                IsThreeState="False"
-                IsChecked="{Binding Path=SomePath, UpdateSourceTrigger=PropertyChanged}"/>
-            <CheckBox
-                Margin="15 10"
-                Content="Открыть редактор плана после импорта"
-                IsThreeState="False"
-                IsChecked="{Binding Path=SomePath, UpdateSourceTrigger=PropertyChanged}"/>
-        </WrapPanel>
         <Grid
-            Grid.Row="2"
+            Grid.Row="1"
+            Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="*"/>
+                <ColumnDefinition
+                    Width="3"/>
+                <ColumnDefinition
+                    Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="Auto"/>
+                    <ColumnDefinition
+                        Width="3"/>
+                    <ColumnDefinition
+                        Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Название"/>
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Text="{Binding Path=Plan.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Год набора"/>
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Width="100"
+                    Text="{Binding Path=Plan.Year, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Факультет"/>
+                <ComboBox
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=Plan.Faculty, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Path=Faculties}"
+                    DisplayMemberPath="Name"/>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Кафедра"/>
+                <ComboBox
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=Plan.Cathedra, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Path=Cathedras}"
+                    DisplayMemberPath="Name"/>
+            </Grid>
+            <Grid
+                Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                    <RowDefinition
+                        Height="32"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="Auto"/>
+                    <ColumnDefinition
+                        Width="3"/>
+                    <ColumnDefinition
+                        Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Направление"/>
+                <ComboBox
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=Plan.Direction, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Path=Directions}"
+                    DisplayMemberPath="DisplayName"/>
+                
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Срок обучения:"/>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Text="c "/>
+                    <DatePicker
+                        VerticalAlignment="Center"
+                        Margin="3 0"
+                        SelectedDate="{Binding Path=Plan.BeginDate, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Text=" по "/>
+                    <DatePicker
+                        VerticalAlignment="Center"
+                        Margin="3 0"
+                        SelectedDate="{Binding Path=Plan.EndDate, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    ToolTip="Тип образовательной программы"
+                    Text="Тип ОП"/>
+                <ComboBox
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=Plan.EducationProgramType, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Path=EducationProgramTypes}"
+                    DisplayMemberPath="Name"/>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Text="Форма обучения"/>
+                <ComboBox
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    SelectedItem="{Binding Path=Plan.EducationForm, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding Path=EducationForms}"
+                    DisplayMemberPath="Name"/>
+            </Grid>
+        </Grid>
+        <Grid
+            Grid.Row="3"
             Grid.ColumnSpan="3">
             <Button
                 VerticalAlignment="Center"
@@ -78,12 +234,12 @@
                 Padding="20 3"/>
         </Grid>
         <GroupBox
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="3"
             Header="Вывод">
             <Grid>
                 <TextBox
-                    Height="400"
+                    Height="250"
                     Style="{StaticResource LogTextBox}"
                     Text="{Binding Path=Log}"/>
             </Grid>

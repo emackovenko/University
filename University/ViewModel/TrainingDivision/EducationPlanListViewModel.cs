@@ -38,7 +38,10 @@ namespace University.ViewModel.TrainingDivision
         void ImportFromXml()
         {
             var vm = new EducationPlanImporterViewModel();
-            ViewInvoker.ShowSimpleWindow(vm);
+            if (ViewInvoker.ShowEditorWindow(vm))
+            {
+                Session.Data.SaveChanges();
+            }
         }
 
         #region Inner logic
